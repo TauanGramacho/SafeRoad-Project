@@ -178,7 +178,7 @@ Cada rodada fica em `docs/testes/evidencias/AAAA-MM-DD/`:
 | `resultado_*.json` | Fatos inferidos pela base, salvos pela opção `--resultado` |
 | `CT-Mxx_*` | Para casos manuais: relatório JSON, saída da CLI, quadro anotado e anotações do testador |
 
-Vídeos e fotos de campo não entram no repositório: guarde-os numa pasta compartilhada e registre aqui o link e o hash SHA-256 (`Get-FileHash <arquivo>` no PowerShell). Rostos e placas devem ser borrados em qualquer evidência publicada (LGPD).
+Os vídeos e fotos usados nos testes ficam fora do repositório, porque são grandes e mostram pessoas. Guarde-os na pasta do grupo e anote aqui de qual arquivo saiu cada evidência. Se alguma imagem for para o texto do TCC, borre rostos e placas.
 
 ## 10. Registro de defeitos
 
