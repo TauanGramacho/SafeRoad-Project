@@ -1,0 +1,64 @@
+define
+attribute classe-detectada, value string;
+attribute confianca, value double;
+attribute arquivo, value string;
+attribute tipo-midia, value string;
+attribute modelo-deteccao, value string;
+attribute id-rastreamento, value integer;
+attribute quadros-detectados, value integer;
+attribute posicao-no-quadro, value string;
+attribute faixa-estimada, value string;
+attribute quadro, value integer;
+attribute tempo-s, value double;
+
+entity analise,
+  owns codigo @key,
+  owns arquivo @card(1),
+  owns tipo-midia @card(1),
+  owns modelo-deteccao @card(1),
+  plays registro-visual:origem;
+
+entity sinal @abstract,
+  owns codigo @key,
+  plays registro-visual:objeto,
+  plays passagem-por-sinal:sinal-cruzado;
+entity semaforo sub sinal;
+entity placa-pare sub sinal;
+
+entity objeto-generico,
+  owns codigo @key,
+  owns classe-detectada @card(1),
+  plays registro-visual:objeto;
+
+entity veiculo,
+  plays registro-visual:objeto,
+  plays passagem-por-sinal:veiculo-passante;
+entity pessoa,
+  plays registro-visual:objeto;
+
+relation registro-visual,
+  relates origem @card(1),
+  relates objeto @card(1),
+  owns classe-detectada @card(1),
+  owns confianca @card(1),
+  owns id-rastreamento,
+  owns quadros-detectados,
+  owns posicao-no-quadro,
+  owns faixa-estimada;
+relation passagem-por-sinal,
+  relates veiculo-passante @card(1),
+  relates sinal-cruzado @card(1),
+  owns quadro @card(1),
+  owns tempo-s @card(1);
+
+fun pilotos-observados($a: analise) -> { pessoa, moto }:
+  match
+    let $p, $v in pilotos();
+    registro-visual (origem: $a, objeto: $v);
+  return { $p, $v };
+
+fun pilotos-sem-capacete-observados($a: analise) -> { pessoa, moto }:
+  match
+    let $p, $v in pilotos-sem-capacete-cadastrado();
+    registro-visual (origem: $a, objeto: $v);
+  return { $p, $v };

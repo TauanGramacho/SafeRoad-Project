@@ -1,0 +1,10 @@
+# Comando: python perception/roadguard.py registrar tests/fixtures/relatorio_imagem.json --resultado docs/testes/evidencias/2026-10-21/resultado_imagem.json
+
+Análise A-6f28291a1d89 registrada no banco roadguard: 5 objeto(s), 1 condução(ões), 0 passagem(ns) por sinal.
+Objetos: caminhao 1, moto 1, objeto-generico 1, pessoa 2
+Pilotos inferidos pela base:
+  - Pessoa observada (detecção 1) conduz Moto observada (detecção 0)
+Alertas:
+  - Piloto sem capacete registrado: Pessoa observada (detecção 1) (Moto observada (detecção 0)). O modelo visual atual não detecta capacete; confirme na imagem.
+Resultado salvo em ..\docs\testes\evidencias\2026-10-21\resultado_imagem.json.
+# Código de saída: 0

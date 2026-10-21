@@ -27,6 +27,10 @@ ANNOTATION_LABELS = {
 }
 VEHICLE_CLASSES = {2, 3, 5, 7}
 SIGNAL_CLASSES = {9, 11}
+PERSON_CLASS = 0
+MOTORCYCLE_CLASS = 3
+RIDER_MIN_OVERLAP = 0.3
+RIDER_MIN_FRAMES = 3
 
 
 class VisionError(Exception):
@@ -293,7 +297,16 @@ def analyze_image(
     if not cv2.imwrite(str(output), draw_detections(frame, detections, cv2, lane_boundaries)):
         raise VisionError(f"Não foi possível salvar a imagem anotada: {output}")
 
+    riders = select_riders({pair: 1 for pair in rider_pairs(detections)}, 1)
+    associations = [
+        {"tipo": "possivel_conducao", "indice_pessoa": person, "indice_veiculo": motorcycle}
+        for person, motorcycle, _ in riders
+    ]
     descriptions = [describe_detection(item) for item in detections]
+    descriptions.extend(
+        f"Pessoa (detecção {person}) possivelmente conduz a moto (detecção {motorcycle})."
+        for person, motorcycle, _ in riders
+    )
     if not descriptions:
         descriptions = ["Nenhum objeto da lista foi detectado."]
     report = {
@@ -301,6 +314,7 @@ def analyze_image(
         "modelo": model_name,
         "dimensoes": {"largura": width, "altura": height},
         "deteccoes": detections,
+        "associacoes": associations,
         "descricao": descriptions,
         "imagem_anotada": str(output),
         "limitacao_posicao": (
@@ -340,6 +354,7 @@ def find_signal_events(
                 "classe_id": detection["classe_id"],
                 "caixa_xyxy": detection["caixa_xyxy"],
                 "quadro": frame_number,
+                "id_rastreamento": detection["id_rastreamento"],
             }
 
     events = []
@@ -347,7 +362,7 @@ def find_signal_events(
         track_id = detection["id_rastreamento"]
         if detection["classe_id"] not in VEHICLE_CLASSES or track_id is None:
             continue
-        x1, _, x2, _ = detection["caixa_xyxy"]
+        x1, y1, x2, y2 = detection["caixa_xyxy"]
         center_x, center_y = (x1 + x2) / 2, (y1 + y2) / 2
         previous = previous_vehicles.get(track_id)
         if previous is not None:
@@ -377,6 +392,7 @@ def find_signal_events(
                                 "id_rastreamento": track_id,
                                 "veiculo": vehicle_class,
                                 "sinal": signal_label,
+                                "id_rastreamento_sinal": signal["id_rastreamento"],
                                 "descricao": (
                                     f"{vehicle_class.capitalize()} #{track_id} possivelmente "
                                     "cruzou "
@@ -386,6 +402,52 @@ def find_signal_events(
                         )
         previous_vehicles[track_id] = (center_y, center_x, detection["classe"])
     return events
+
+
+def is_probable_rider(person_box: list[float], vehicle_box: list[float]) -> bool:
+    px1, py1, px2, py2 = person_box
+    vx1, vy1, vx2, vy2 = vehicle_box
+    if not vx1 <= (px1 + px2) / 2 <= vx2:
+        return False
+    # A cabeça fica acima da moto e os pés não passam muito da base dela.
+    if not py1 < vy1 < py2 <= vy2 + (vy2 - vy1) * 0.15:
+        return False
+    overlap_width = min(px2, vx2) - max(px1, vx1)
+    overlap_height = min(py2, vy2) - max(py1, vy1)
+    person_area = max((px2 - px1) * (py2 - py1), 1.0)
+    return overlap_width * overlap_height / person_area >= RIDER_MIN_OVERLAP
+
+
+def rider_pairs(detections: list[dict[str, Any]]) -> list[tuple[int, int]]:
+    people = [i for i, item in enumerate(detections) if item["classe_id"] == PERSON_CLASS]
+    motorcycles = [
+        i for i, item in enumerate(detections) if item["classe_id"] == MOTORCYCLE_CLASS
+    ]
+    return [
+        (person, motorcycle)
+        for person in people
+        for motorcycle in motorcycles
+        if is_probable_rider(
+            detections[person]["caixa_xyxy"], detections[motorcycle]["caixa_xyxy"]
+        )
+    ]
+
+
+def select_riders(
+    counts: dict[tuple[int, int], int], min_frames: int
+) -> list[tuple[int, int, int]]:
+    selected = []
+    people: set[int] = set()
+    motorcycles: set[int] = set()
+    for (person, motorcycle), frames in sorted(
+        counts.items(), key=lambda item: (-item[1], item[0])
+    ):
+        if frames < min_frames or person in people or motorcycle in motorcycles:
+            continue
+        people.add(person)
+        motorcycles.add(motorcycle)
+        selected.append((person, motorcycle, frames))
+    return selected
 
 
 def analyze_video(
@@ -425,6 +487,7 @@ def analyze_video(
     previous_vehicles: dict[int, tuple[float, float, str]] = {}
     recent_signals: dict[tuple[int, int | str], dict[str, Any]] = {}
     emitted_events: set[tuple[int, tuple[int, int | str]]] = set()
+    rider_counts: dict[tuple[int, int], int] = {}
     frame_number = 0
     try:
         while True:
@@ -467,6 +530,13 @@ def analyze_video(
                 summary["ultima_posicao_no_quadro"] = detection["posicao_no_quadro"]
                 if "faixa_estimada" in detection:
                     summary["ultima_faixa_estimada"] = detection["faixa_estimada"]["posicao"]
+            for person, motorcycle in rider_pairs(detections):
+                pair = (
+                    detections[person]["id_rastreamento"],
+                    detections[motorcycle]["id_rastreamento"],
+                )
+                if None not in pair:
+                    rider_counts[pair] = rider_counts.get(pair, 0) + 1
             events.extend(
                 find_signal_events(
                     frame_number,
@@ -499,6 +569,11 @@ def analyze_video(
             f"{item['classe'].capitalize()} #{track_id} apareceu em "
             f"{item['quadros_detectados']} quadro(s); última posição: {position}."
         )
+    riders = select_riders(rider_counts, RIDER_MIN_FRAMES)
+    descriptions.extend(
+        f"Pessoa #{person} possivelmente conduz a moto #{motorcycle} ({frames} quadros)."
+        for person, motorcycle, frames in riders
+    )
     descriptions.extend(event["descricao"] for event in events)
     if not descriptions:
         descriptions = ["Nenhum objeto da lista foi detectado."]
@@ -511,12 +586,22 @@ def analyze_video(
         "quadros_analisados": frame_number,
         "objetos_rastreados": tracks,
         "eventos": events,
+        "associacoes": [
+            {
+                "tipo": "possivel_conducao",
+                "id_pessoa": person,
+                "id_veiculo": motorcycle,
+                "quadros": frames,
+            }
+            for person, motorcycle, frames in riders
+        ],
         "descricao": descriptions,
         "limitacoes": [
             "A faixa é estimada por linhas retas e pode estar incorreta; ela não é segmentada.",
             "A passagem por sinal supõe movimento para a parte inferior de um quadro frontal.",
             "O evento é uma hipótese geométrica e não confirma a passagem física pelo sinal.",
             "O modelo não lê a cor do semáforo nem determina preferência ou infração.",
+            "A condução é inferida pela sobreposição entre pessoa e moto e pode errar.",
         ],
     }
 

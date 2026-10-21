@@ -1,0 +1,69 @@
+{
+  "analise": "A-03dfa2979fe5",
+  "banco": "roadguard",
+  "relatorio": "..\\tests\\fixtures\\relatorio_video.json",
+  "objetos": [
+    {
+      "classe": "pessoa",
+      "codigo": "A-03dfa2979fe5-T1",
+      "confianca": 0.91,
+      "tipo": "pessoa"
+    },
+    {
+      "classe": "moto",
+      "codigo": "A-03dfa2979fe5-T2",
+      "confianca": 0.88,
+      "tipo": "moto"
+    },
+    {
+      "classe": "carro",
+      "codigo": "A-03dfa2979fe5-T3",
+      "confianca": 0.95,
+      "tipo": "carro"
+    },
+    {
+      "classe": "placa de pare",
+      "codigo": "A-03dfa2979fe5-T4",
+      "confianca": 0.72,
+      "tipo": "placa-pare"
+    },
+    {
+      "classe": "ônibus",
+      "codigo": "A-03dfa2979fe5-T5",
+      "confianca": 0.81,
+      "tipo": "objeto-generico"
+    },
+    {
+      "classe": "pessoa",
+      "codigo": "A-03dfa2979fe5-T6",
+      "confianca": 0.64,
+      "tipo": "pessoa"
+    }
+  ],
+  "pilotos": [
+    {
+      "moto": "Moto observada #2",
+      "piloto": "Pessoa observada #1"
+    }
+  ],
+  "pilotos_sem_capacete": [
+    {
+      "moto": "Moto observada #2",
+      "piloto": "Pessoa observada #1"
+    }
+  ],
+  "passagens_por_sinal": [
+    {
+      "quadro": 42,
+      "sinal": "placa-pare",
+      "tempo_s": 1.64,
+      "veiculo": "Moto observada #2"
+    },
+    {
+      "quadro": 90,
+      "sinal": "semaforo",
+      "tempo_s": 3.56,
+      "veiculo": "Carro observado #3"
+    }
+  ]
+}

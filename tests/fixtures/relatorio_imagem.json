@@ -1,0 +1,54 @@
+{
+  "arquivo": "C:\\fotos\\avenida.jpg",
+  "modelo": "yolo11n.pt",
+  "dimensoes": {"largura": 1280, "altura": 720},
+  "deteccoes": [
+    {
+      "classe_id": 3,
+      "classe": "moto",
+      "confianca": 0.87,
+      "caixa_xyxy": [600.0, 380.0, 700.0, 520.0],
+      "posicao_no_quadro": "centro",
+      "id_rastreamento": null,
+      "faixa_estimada": {"posicao": "centro", "quantidade_estimada": 3}
+    },
+    {
+      "classe_id": 0,
+      "classe": "pessoa",
+      "confianca": 0.9,
+      "caixa_xyxy": [610.0, 300.0, 690.0, 470.0],
+      "posicao_no_quadro": "centro",
+      "id_rastreamento": null
+    },
+    {
+      "classe_id": 0,
+      "classe": "pessoa",
+      "confianca": 0.77,
+      "caixa_xyxy": [100.0, 300.0, 150.0, 450.0],
+      "posicao_no_quadro": "esquerda",
+      "id_rastreamento": null
+    },
+    {
+      "classe_id": 7,
+      "classe": "caminhão",
+      "confianca": 0.93,
+      "caixa_xyxy": [900.0, 250.0, 1200.0, 600.0],
+      "posicao_no_quadro": "direita",
+      "id_rastreamento": null
+    },
+    {
+      "classe_id": 1,
+      "classe": "bicicleta",
+      "confianca": 0.55,
+      "caixa_xyxy": [200.0, 400.0, 260.0, 470.0],
+      "posicao_no_quadro": "esquerda",
+      "id_rastreamento": null
+    }
+  ],
+  "associacoes": [
+    {"tipo": "possivel_conducao", "indice_pessoa": 1, "indice_veiculo": 0}
+  ],
+  "descricao": [],
+  "imagem_anotada": "C:\\fotos\\avenida_anotada.jpg",
+  "limitacao_posicao": ""
+}

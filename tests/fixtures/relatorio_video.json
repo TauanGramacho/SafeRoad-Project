@@ -1,0 +1,96 @@
+{
+  "arquivo": "C:\\videos\\cruzamento.mp4",
+  "modelo": "yolo11n.pt",
+  "video_anotado": "C:\\videos\\cruzamento_anotado.mp4",
+  "dimensoes": {"largura": 1280, "altura": 720},
+  "fps": 25.0,
+  "quadros_analisados": 150,
+  "objetos_rastreados": {
+    "1": {
+      "classe": "pessoa",
+      "quadros_detectados": 40,
+      "confianca_maxima": 0.91,
+      "primeiro_quadro": 10,
+      "ultimo_quadro": 49,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "2": {
+      "classe": "moto",
+      "quadros_detectados": 42,
+      "confianca_maxima": 0.88,
+      "primeiro_quadro": 8,
+      "ultimo_quadro": 49,
+      "ultima_posicao_no_quadro": "centro",
+      "ultima_faixa_estimada": "direita"
+    },
+    "3": {
+      "classe": "carro",
+      "quadros_detectados": 80,
+      "confianca_maxima": 0.95,
+      "primeiro_quadro": 20,
+      "ultimo_quadro": 99,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "4": {
+      "classe": "placa de pare",
+      "quadros_detectados": 60,
+      "confianca_maxima": 0.72,
+      "primeiro_quadro": 1,
+      "ultimo_quadro": 60,
+      "ultima_posicao_no_quadro": "direita"
+    },
+    "5": {
+      "classe": "ônibus",
+      "quadros_detectados": 30,
+      "confianca_maxima": 0.81,
+      "primeiro_quadro": 100,
+      "ultimo_quadro": 129,
+      "ultima_posicao_no_quadro": "direita"
+    },
+    "6": {
+      "classe": "pessoa",
+      "quadros_detectados": 15,
+      "confianca_maxima": 0.64,
+      "primeiro_quadro": 30,
+      "ultimo_quadro": 44,
+      "ultima_posicao_no_quadro": "direita"
+    }
+  },
+  "eventos": [
+    {
+      "tipo": "possivel_passagem_visual_por_sinal",
+      "quadro": 42,
+      "tempo_s": 1.64,
+      "id_rastreamento": 2,
+      "veiculo": "moto",
+      "sinal": "placa de pare",
+      "id_rastreamento_sinal": 4,
+      "descricao": "Moto #2 possivelmente cruzou a linha visual de uma placa de pare."
+    },
+    {
+      "tipo": "possivel_passagem_visual_por_sinal",
+      "quadro": 90,
+      "tempo_s": 3.56,
+      "id_rastreamento": 3,
+      "veiculo": "carro",
+      "sinal": "semáforo",
+      "id_rastreamento_sinal": null,
+      "descricao": "Carro #3 possivelmente cruzou a linha visual de um semáforo."
+    },
+    {
+      "tipo": "possivel_passagem_visual_por_sinal",
+      "quadro": 120,
+      "tempo_s": 4.76,
+      "id_rastreamento": 5,
+      "veiculo": "ônibus",
+      "sinal": "placa de pare",
+      "id_rastreamento_sinal": 4,
+      "descricao": "Ônibus #5 possivelmente cruzou a linha visual de uma placa de pare."
+    }
+  ],
+  "associacoes": [
+    {"tipo": "possivel_conducao", "id_pessoa": 1, "id_veiculo": 2, "quadros": 35}
+  ],
+  "descricao": [],
+  "limitacoes": []
+}

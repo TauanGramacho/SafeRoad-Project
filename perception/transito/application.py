@@ -4,21 +4,27 @@ from urllib.parse import quote
 
 from transito.client import Document, TypeDBClient, TypeDBError
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+KNOWLEDGE_BASE_ROOT = PROJECT_ROOT / "knowledge_base"
 REQUIRED_FUNCTIONS = (
     "pilotos",
     "motoristas",
     "equipamentos-do-veiculo",
     "pilotos-sem-capacete-cadastrado",
 )
+OBSERVATION_FUNCTIONS = ("pilotos-observados", "pilotos-sem-capacete-observados")
+
+
+def defines_functions(schema: str, names: tuple[str, ...]) -> bool:
+    return all(re.search(r"\bfun\s+" + re.escape(name) + r"\s*\(", schema) for name in names)
 
 
 class KnowledgeBase:
-    def __init__(self, client: TypeDBClient, root: Path = PROJECT_ROOT) -> None:
+    def __init__(self, client: TypeDBClient, root: Path = KNOWLEDGE_BASE_ROOT) -> None:
         self.client = client
         self.root = root
 
-    def initialize(self) -> bool:
+    def initialize(self, seed: bool = True) -> bool:
         response = self.client.request("GET", "/v1/databases")
         if not isinstance(response, dict) or not isinstance(response.get("databases"), list):
             raise TypeDBError("O TypeDB retornou uma lista de bancos inválida.")
@@ -29,13 +35,16 @@ class KnowledgeBase:
         schema = self.client.request("GET", f"{path}/schema", as_text=True)
         if schema in ("", "define", "define;"):
             self.client.query(self.read(self.root / "schema.tql"), "schema")
-        elif not all(
-            re.search(r"\bfun\s+" + re.escape(name) + r"\s*\(", schema)
-            for name in REQUIRED_FUNCTIONS
-        ):
+            schema = ""
+        elif not defines_functions(schema, REQUIRED_FUNCTIONS):
             raise TypeDBError(
                 "O banco já possui outro esquema. Escolha um banco novo com --database."
             )
+        # Bancos criados antes da camada de observação recebem apenas a extensão.
+        if not defines_functions(schema, OBSERVATION_FUNCTIONS):
+            self.client.query(self.read(self.root / "observacoes.tql"), "schema")
+        if not seed:
+            return False
         if self.client.query('match $v isa veiculo; limit 1; fetch {"codigo": $v.codigo};'):
             return False
         self.client.query(self.read(self.root / "dados.tql"), "write")

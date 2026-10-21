@@ -1,0 +1,50 @@
+{
+  "analise": "A-6f28291a1d89",
+  "banco": "roadguard",
+  "relatorio": "..\\tests\\fixtures\\relatorio_imagem.json",
+  "objetos": [
+    {
+      "classe": "moto",
+      "codigo": "A-6f28291a1d89-D0",
+      "confianca": 0.87,
+      "tipo": "moto"
+    },
+    {
+      "classe": "pessoa",
+      "codigo": "A-6f28291a1d89-D1",
+      "confianca": 0.9,
+      "tipo": "pessoa"
+    },
+    {
+      "classe": "pessoa",
+      "codigo": "A-6f28291a1d89-D2",
+      "confianca": 0.77,
+      "tipo": "pessoa"
+    },
+    {
+      "classe": "caminhão",
+      "codigo": "A-6f28291a1d89-D3",
+      "confianca": 0.93,
+      "tipo": "caminhao"
+    },
+    {
+      "classe": "bicicleta",
+      "codigo": "A-6f28291a1d89-D4",
+      "confianca": 0.55,
+      "tipo": "objeto-generico"
+    }
+  ],
+  "pilotos": [
+    {
+      "moto": "Moto observada (detecção 0)",
+      "piloto": "Pessoa observada (detecção 1)"
+    }
+  ],
+  "pilotos_sem_capacete": [
+    {
+      "moto": "Moto observada (detecção 0)",
+      "piloto": "Pessoa observada (detecção 1)"
+    }
+  ],
+  "passagens_por_sinal": []
+}
