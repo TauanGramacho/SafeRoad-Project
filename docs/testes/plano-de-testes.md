@@ -1,4 +1,4 @@
-# Plano de testes e validação: SafeRoad / AI RoadGuard
+# Plano de testes e validação: SafeRoad
 
 Versão 1.0, 21/10/2026. Cobre a integração entre a percepção visual e a base de conhecimento (opção A: ponte de observações para fatos).
 
