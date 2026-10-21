@@ -1,4 +1,4 @@
-# SafeRoad / AI RoadGuard
+# SafeRoad 
 
 Protótipo de visão computacional para trânsito integrado a uma base de conhecimento em TypeDB. A visão detecta objetos em imagens e vídeos; a base recebe essas observações como fatos e aplica regras sobre elas (por exemplo, "piloto sem capacete registrado").
 
