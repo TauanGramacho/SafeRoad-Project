@@ -25,6 +25,7 @@ ANNOTATION_LABELS = {
     9: "semaforo",
     11: "placa de pare",
 }
+FEMININE_CLASSES = {0, 1, 3, 11}
 VEHICLE_CLASSES = {2, 3, 5, 7}
 SIGNAL_CLASSES = {9, 11}
 
@@ -244,8 +245,9 @@ def describe_detection(detection: dict[str, Any]) -> str:
             "centro": "no centro do quadro",
             "direita": "à direita do quadro",
         }[detection["posicao_no_quadro"]]
+    detected = "detectada" if detection["classe_id"] in FEMININE_CLASSES else "detectado"
     return (
-        f"{detection['classe'].capitalize()} detectado {position} "
+        f"{detection['classe'].capitalize()} {detected} {position} "
         f"(confiança {detection['confianca']:.0%})."
     )
 
@@ -347,7 +349,7 @@ def find_signal_events(
         track_id = detection["id_rastreamento"]
         if detection["classe_id"] not in VEHICLE_CLASSES or track_id is None:
             continue
-        x1, _, x2, _ = detection["caixa_xyxy"]
+        x1, y1, x2, y2 = detection["caixa_xyxy"]
         center_x, center_y = (x1 + x2) / 2, (y1 + y2) / 2
         previous = previous_vehicles.get(track_id)
         if previous is not None:

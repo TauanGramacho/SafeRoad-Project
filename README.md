@@ -13,9 +13,10 @@ python -m pip install --upgrade pip
 python -m pip install -r requirements-visao.txt
 ```
 
-Exemplos:
+Exemplos, a partir da pasta `perception`:
 
 ```powershell
+cd perception
 python visao.py imagem "C:\caminho\para\imagem.jpg"
 python visao.py video "C:\caminho\para\video.mp4"
 ```
@@ -45,10 +46,11 @@ A estimativa de faixa procura linhas retas na região inferior da imagem. Pode c
 
 ## Atividade 2: base de conhecimento TypeDB
 
-A CLI existente continua disponível pelo arquivo `prototipo.py`. Com Docker em execução:
+A CLI existente continua disponível pelo arquivo `perception/prototipo.py`. O schema, os dados, as consultas e o `compose.yaml` ficam na pasta `knowlodge base`. Com Docker em execução, na raiz do projeto:
 
 ```powershell
-docker compose up -d
+docker compose -f "knowlodge base/compose.yaml" up -d
+cd perception
 python prototipo.py iniciar
 python prototipo.py demonstrar
 python prototipo.py validar
@@ -57,7 +59,28 @@ python prototipo.py validar
 Para executar uma consulta específica:
 
 ```powershell
-python prototipo.py consultar consultas\01-veiculos.tql
+python prototipo.py consultar "..\knowlodge base\consultas\01-veiculos.tql"
 ```
 
 As análises visuais não precisam de Docker ou TypeDB. Os fatos existentes de veículos, pessoas, equipamentos e relações permanecem separados das observações de imagens e vídeos.
+
+## Integração entre visão e base de conhecimento
+
+`integracao.py` lê o relatório gerado por `visao.py` e informa quais classes detectadas existem como tipo de veículo na base. Precisa do TypeDB em execução.
+
+```powershell
+cd perception
+python integracao.py "C:\caminho\para\video_anotado_relatorio.json"
+```
+
+## Testes
+
+Os testes que usam o banco só rodam com `TYPEDB_TEST_URL` definida:
+
+```powershell
+$env:PYTHONPATH = "perception"
+$env:TYPEDB_TEST_URL = "http://127.0.0.1:18000"
+python -m unittest discover -s tests -v
+```
+
+O plano de testes, os casos e os resultados estão em `docs/testes-e-validacao.md`.
