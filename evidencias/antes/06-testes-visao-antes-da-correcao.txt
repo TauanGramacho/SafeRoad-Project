@@ -1,0 +1,71 @@
+# Commit b75e7e9 + testes novos (tests/test_visao.py), antes das correções, 21/10/2026 20:13
+$ PYTHONPATH=perception python -m unittest tests.test_visao -v
+test_empty_result (tests.test_visao.DetectionsTests.test_empty_result) ... ok
+test_ignores_classes_outside_the_list (tests.test_visao.DetectionsTests.test_ignores_classes_outside_the_list) ... ok
+test_keeps_tracking_id_when_present (tests.test_visao.DetectionsTests.test_keeps_tracking_id_when_present) ... ok
+test_assigns_lane_with_three_boundaries (tests.test_visao.LaneTests.test_assigns_lane_with_three_boundaries) ... ok
+test_ignores_more_than_five_boundaries (tests.test_visao.LaneTests.test_ignores_more_than_five_boundaries) ... ok
+test_needs_at_least_three_boundaries (tests.test_visao.LaneTests.test_needs_at_least_three_boundaries) ... ok
+test_signals_never_receive_a_lane (tests.test_visao.LaneTests.test_signals_never_receive_a_lane) ... ok
+test_divides_frame_in_three_parts (tests.test_visao.PositionTests.test_divides_frame_in_three_parts) ... ok
+test_zero_width_does_not_divide_by_zero (tests.test_visao.PositionTests.test_zero_width_does_not_divide_by_zero) ... ok
+test_old_signals_expire_after_two_seconds (tests.test_visao.SignalEventTests.test_old_signals_expire_after_two_seconds) ... ERROR
+test_vehicle_crossing_the_signal_line_creates_one_event (tests.test_visao.SignalEventTests.test_vehicle_crossing_the_signal_line_creates_one_event) ... ERROR
+test_vehicle_far_from_the_signal_is_ignored (tests.test_visao.SignalEventTests.test_vehicle_far_from_the_signal_is_ignored) ... ERROR
+test_vehicle_without_tracking_id_is_ignored (tests.test_visao.SignalEventTests.test_vehicle_without_tracking_id_is_ignored) ... ok
+test_blank_image_has_no_lines (tests.test_visao.SyntheticLaneImageTests.test_blank_image_has_no_lines) ... ok
+test_finds_the_painted_lines_of_a_synthetic_road (tests.test_visao.SyntheticLaneImageTests.test_finds_the_painted_lines_of_a_synthetic_road) ... ok
+test_default_output_names (tests.test_visao.TextAndPathTests.test_default_output_names) ... ok
+test_describes_frame_position_without_lane (tests.test_visao.TextAndPathTests.test_describes_frame_position_without_lane) ... FAIL
+test_describes_lane_when_available (tests.test_visao.TextAndPathTests.test_describes_lane_when_available) ... ok
+
+======================================================================
+ERROR: test_old_signals_expire_after_two_seconds (tests.test_visao.SignalEventTests.test_old_signals_expire_after_two_seconds)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+    self.run_frame(60, [detection(2, [580, 120, 680, 160], 5)])
+    return find_signal_events(
+           ^^^^^^^^^^^^^^^^^^^
+    center_x, center_y = (x1 + x2) / 2, (y1 + y2) / 2
+                                         ^^
+NameError: name 'y1' is not defined
+
+======================================================================
+ERROR: test_vehicle_crossing_the_signal_line_creates_one_event (tests.test_visao.SignalEventTests.test_vehicle_crossing_the_signal_line_creates_one_event)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+    self.assertEqual(self.run_frame(1, [light, detection(2, [580, 120, 680, 160], 5)]), [])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    return find_signal_events(
+           ^^^^^^^^^^^^^^^^^^^
+    center_x, center_y = (x1 + x2) / 2, (y1 + y2) / 2
+                                         ^^
+NameError: name 'y1' is not defined
+
+======================================================================
+ERROR: test_vehicle_far_from_the_signal_is_ignored (tests.test_visao.SignalEventTests.test_vehicle_far_from_the_signal_is_ignored)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+    self.run_frame(1, [light, detection(2, [0, 120, 80, 160], 5)])
+    return find_signal_events(
+           ^^^^^^^^^^^^^^^^^^^
+    center_x, center_y = (x1 + x2) / 2, (y1 + y2) / 2
+                                         ^^
+NameError: name 'y1' is not defined
+
+======================================================================
+FAIL: test_describes_frame_position_without_lane (tests.test_visao.TextAndPathTests.test_describes_frame_position_without_lane)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+    self.assertEqual(
+AssertionError: 'Moto detectado no centro do quadro (confiança 90%).' != 'Moto detectada no centro do quadro (confiança 90%).'
+- Moto detectado no centro do quadro (confiança 90%).
+?              ^
++ Moto detectada no centro do quadro (confiança 90%).
+?              ^
+
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.174s
+
+FAILED (failures=1, errors=3)

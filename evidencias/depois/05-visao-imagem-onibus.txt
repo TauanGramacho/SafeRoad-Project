@@ -1,0 +1,10 @@
+# 21/10/2026 20:15, commit 8d46b4c
+$ cd perception && python visao.py imagem ../evidencias/entradas/bus.jpg --saida ../evidencias/depois/bus_anotada.jpg
+Ônibus detectado na faixa esquerda estimada (confiança 94%).
+Pessoa detectada à direita do quadro (confiança 89%).
+Pessoa detectada à esquerda do quadro (confiança 88%).
+Pessoa detectada no centro do quadro (confiança 86%).
+Pessoa detectada à esquerda do quadro (confiança 62%).
+Arquivo anotado: ../evidencias/depois/bus_anotada.jpg
+Relatório: ../evidencias/depois/bus_anotada_relatorio.json
+código de saída: 0

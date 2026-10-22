@@ -1,0 +1,102 @@
+{
+  "arquivo": "../evidencias/entradas/quadro-9s.jpg",
+  "modelo": "yolo11n.pt",
+  "dimensoes": {
+    "largura": 1280,
+    "altura": 720
+  },
+  "deteccoes": [
+    {
+      "classe_id": 2,
+      "classe": "carro",
+      "confianca": 0.6424,
+      "caixa_xyxy": [
+        545.9,
+        424.1,
+        591.7,
+        459.2
+      ],
+      "posicao_no_quadro": "centro",
+      "id_rastreamento": null
+    },
+    {
+      "classe_id": 2,
+      "classe": "carro",
+      "confianca": 0.5314,
+      "caixa_xyxy": [
+        592.7,
+        433.6,
+        631.3,
+        457.5
+      ],
+      "posicao_no_quadro": "centro",
+      "id_rastreamento": null
+    },
+    {
+      "classe_id": 0,
+      "classe": "pessoa",
+      "confianca": 0.3735,
+      "caixa_xyxy": [
+        680.8,
+        407.8,
+        705.9,
+        471.5
+      ],
+      "posicao_no_quadro": "centro",
+      "id_rastreamento": null
+    },
+    {
+      "classe_id": 0,
+      "classe": "pessoa",
+      "confianca": 0.3252,
+      "caixa_xyxy": [
+        669.5,
+        408.4,
+        694.3,
+        469.7
+      ],
+      "posicao_no_quadro": "centro",
+      "id_rastreamento": null
+    },
+    {
+      "classe_id": 0,
+      "classe": "pessoa",
+      "confianca": 0.2937,
+      "caixa_xyxy": [
+        673.1,
+        404.1,
+        707.5,
+        470.3
+      ],
+      "posicao_no_quadro": "centro",
+      "id_rastreamento": null
+    },
+    {
+      "classe_id": 2,
+      "classe": "carro",
+      "confianca": 0.2534,
+      "caixa_xyxy": [
+        628.3,
+        413.9,
+        673.7,
+        460.5
+      ],
+      "posicao_no_quadro": "centro",
+      "id_rastreamento": null,
+      "faixa_estimada": {
+        "posicao": "direita",
+        "quantidade_estimada": 3
+      }
+    }
+  ],
+  "descricao": [
+    "Carro detectado no centro do quadro (confiança 64%).",
+    "Carro detectado no centro do quadro (confiança 53%).",
+    "Pessoa detectada no centro do quadro (confiança 37%).",
+    "Pessoa detectada no centro do quadro (confiança 33%).",
+    "Pessoa detectada no centro do quadro (confiança 29%).",
+    "Carro detectado na faixa direita estimada (confiança 25%)."
+  ],
+  "imagem_anotada": "../evidencias/depois/quadro-9s_anotada.jpg",
+  "limitacao_posicao": "A faixa é estimada por linhas retas; sem linhas suficientes, a posição é relativa ao quadro."
+}

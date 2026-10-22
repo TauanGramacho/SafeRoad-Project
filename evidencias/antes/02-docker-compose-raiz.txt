@@ -1,0 +1,3 @@
+$ docker compose up -d   (na raiz, como o README indica)
+no configuration file provided: not found
+código de saída: 1

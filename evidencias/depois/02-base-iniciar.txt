@@ -1,0 +1,4 @@
+# 21/10/2026 20:15, commit 8d46b4c
+$ cd perception && python prototipo.py iniciar
+Base já contém veículos. Dados existentes preservados.
+código de saída: 0

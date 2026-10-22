@@ -1,0 +1,13 @@
+{
+  "relatorio": "../evidencias/entradas/dashcam-oldenburg.mp4",
+  "tipos_na_base": {
+    "caminhao": 8,
+    "carro": 35
+  },
+  "sem_correspondencia": {
+    "bicicleta": 12,
+    "pessoa": 45,
+    "semáforo": 18,
+    "ônibus": 5
+  }
+}

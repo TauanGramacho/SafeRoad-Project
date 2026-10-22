@@ -1,0 +1,11 @@
+# 21/10/2026 20:15, commit 8d46b4c
+$ cd perception && python visao.py imagem ../evidencias/entradas/quadro-9s.jpg --saida ../evidencias/depois/quadro-9s_anotada.jpg
+Carro detectado no centro do quadro (confiança 64%).
+Carro detectado no centro do quadro (confiança 53%).
+Pessoa detectada no centro do quadro (confiança 37%).
+Pessoa detectada no centro do quadro (confiança 33%).
+Pessoa detectada no centro do quadro (confiança 29%).
+Carro detectado na faixa direita estimada (confiança 25%).
+Arquivo anotado: ../evidencias/depois/quadro-9s_anotada.jpg
+Relatório: ../evidencias/depois/quadro-9s_anotada_relatorio.json
+código de saída: 0
