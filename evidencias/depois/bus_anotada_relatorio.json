@@ -1,0 +1,88 @@
+{
+  "arquivo": "../evidencias/entradas/bus.jpg",
+  "modelo": "yolo11n.pt",
+  "dimensoes": {
+    "largura": 810,
+    "altura": 1080
+  },
+  "deteccoes": [
+    {
+      "classe_id": 5,
+      "classe": "ônibus",
+      "confianca": 0.9404,
+      "caixa_xyxy": [
+        3.8,
+        229.4,
+        796.2,
+        728.3
+      ],
+      "posicao_no_quadro": "centro",
+      "id_rastreamento": null,
+      "faixa_estimada": {
+        "posicao": "esquerda",
+        "quantidade_estimada": 4
+      }
+    },
+    {
+      "classe_id": 0,
+      "classe": "pessoa",
+      "confianca": 0.8884,
+      "caixa_xyxy": [
+        671.0,
+        394.9,
+        809.8,
+        878.7
+      ],
+      "posicao_no_quadro": "direita",
+      "id_rastreamento": null
+    },
+    {
+      "classe_id": 0,
+      "classe": "pessoa",
+      "confianca": 0.8788,
+      "caixa_xyxy": [
+        47.4,
+        399.6,
+        239.4,
+        904.2
+      ],
+      "posicao_no_quadro": "esquerda",
+      "id_rastreamento": null
+    },
+    {
+      "classe_id": 0,
+      "classe": "pessoa",
+      "confianca": 0.8564,
+      "caixa_xyxy": [
+        223.1,
+        408.7,
+        344.5,
+        860.4
+      ],
+      "posicao_no_quadro": "centro",
+      "id_rastreamento": null
+    },
+    {
+      "classe_id": 0,
+      "classe": "pessoa",
+      "confianca": 0.6235,
+      "caixa_xyxy": [
+        0.0,
+        556.1,
+        68.8,
+        872.3
+      ],
+      "posicao_no_quadro": "esquerda",
+      "id_rastreamento": null
+    }
+  ],
+  "descricao": [
+    "Ônibus detectado na faixa esquerda estimada (confiança 94%).",
+    "Pessoa detectada à direita do quadro (confiança 89%).",
+    "Pessoa detectada à esquerda do quadro (confiança 88%).",
+    "Pessoa detectada no centro do quadro (confiança 86%).",
+    "Pessoa detectada à esquerda do quadro (confiança 62%)."
+  ],
+  "imagem_anotada": "../evidencias/depois/bus_anotada.jpg",
+  "limitacao_posicao": "A faixa é estimada por linhas retas; sem linhas suficientes, a posição é relativa ao quadro."
+}

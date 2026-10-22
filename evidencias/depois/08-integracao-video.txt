@@ -1,0 +1,16 @@
+# 21/10/2026 21:01, commit 8d46b4c
+$ cd perception && python integracao.py ../evidencias/depois/dashcam_anotado_relatorio.json
+{
+  "relatorio": "../evidencias/entradas/dashcam-oldenburg.mp4",
+  "tipos_na_base": {
+    "caminhao": 8,
+    "carro": 35
+  },
+  "sem_correspondencia": {
+    "bicicleta": 12,
+    "pessoa": 45,
+    "semáforo": 18,
+    "ônibus": 5
+  }
+}
+código de saída: 0

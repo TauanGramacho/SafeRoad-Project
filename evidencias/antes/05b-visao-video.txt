@@ -1,0 +1,4 @@
+# Commit b75e7e9, 21/10/2026 20:12 (com o pacote lap instalado)
+$ python visao.py video ../evidencias/entradas/dashcam-oldenburg.mp4 --saida ../evidencias/antes/video_anotado.mp4
+Erro durante a análise: name 'y1' is not defined
+código de saída: 1

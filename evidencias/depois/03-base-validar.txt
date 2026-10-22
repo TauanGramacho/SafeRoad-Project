@@ -1,0 +1,5 @@
+# 21/10/2026 20:15, commit 8d46b4c
+$ cd perception && python prototipo.py validar
+Validação aprovada: herança, relações e inferências conferidas no TypeDB.
+Resultados salvos em <projeto>/resultados-verificados.json.
+código de saída: 0

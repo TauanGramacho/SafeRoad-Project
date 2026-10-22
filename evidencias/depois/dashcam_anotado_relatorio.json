@@ -1,0 +1,1152 @@
+{
+  "arquivo": "../evidencias/entradas/dashcam-oldenburg.mp4",
+  "modelo": "yolo11n.pt",
+  "video_anotado": "../evidencias/depois/dashcam_anotado.mp4",
+  "dimensoes": {
+    "largura": 1280,
+    "altura": 720
+  },
+  "fps": 29.97,
+  "quadros_analisados": 557,
+  "objetos_rastreados": {
+    "1": {
+      "classe": "semáforo",
+      "quadros_detectados": 86,
+      "confianca_maxima": 0.7824,
+      "primeiro_quadro": 1,
+      "ultimo_quadro": 86,
+      "ultima_posicao_no_quadro": "direita"
+    },
+    "2": {
+      "classe": "ônibus",
+      "quadros_detectados": 143,
+      "confianca_maxima": 0.8821,
+      "primeiro_quadro": 1,
+      "ultimo_quadro": 147,
+      "ultima_posicao_no_quadro": "direita",
+      "ultima_faixa_estimada": "direita"
+    },
+    "3": {
+      "classe": "pessoa",
+      "quadros_detectados": 69,
+      "confianca_maxima": 0.6043,
+      "primeiro_quadro": 1,
+      "ultimo_quadro": 75,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "4": {
+      "classe": "semáforo",
+      "quadros_detectados": 123,
+      "confianca_maxima": 0.6632,
+      "primeiro_quadro": 1,
+      "ultimo_quadro": 139,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "5": {
+      "classe": "pessoa",
+      "quadros_detectados": 3,
+      "confianca_maxima": 0.4277,
+      "primeiro_quadro": 1,
+      "ultimo_quadro": 3,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "6": {
+      "classe": "pessoa",
+      "quadros_detectados": 4,
+      "confianca_maxima": 0.3444,
+      "primeiro_quadro": 1,
+      "ultimo_quadro": 4,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "7": {
+      "classe": "pessoa",
+      "quadros_detectados": 4,
+      "confianca_maxima": 0.3171,
+      "primeiro_quadro": 1,
+      "ultimo_quadro": 19,
+      "ultima_posicao_no_quadro": "direita"
+    },
+    "8": {
+      "classe": "pessoa",
+      "quadros_detectados": 2,
+      "confianca_maxima": 0.296,
+      "primeiro_quadro": 1,
+      "ultimo_quadro": 2,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "9": {
+      "classe": "pessoa",
+      "quadros_detectados": 2,
+      "confianca_maxima": 0.2718,
+      "primeiro_quadro": 1,
+      "ultimo_quadro": 2,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "10": {
+      "classe": "pessoa",
+      "quadros_detectados": 59,
+      "confianca_maxima": 0.5142,
+      "primeiro_quadro": 1,
+      "ultimo_quadro": 65,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "23": {
+      "classe": "pessoa",
+      "quadros_detectados": 123,
+      "confianca_maxima": 0.7442,
+      "primeiro_quadro": 23,
+      "ultimo_quadro": 161,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "35": {
+      "classe": "carro",
+      "quadros_detectados": 4,
+      "confianca_maxima": 0.4173,
+      "primeiro_quadro": 37,
+      "ultimo_quadro": 52,
+      "ultima_posicao_no_quadro": "centro",
+      "ultima_faixa_estimada": "esquerda"
+    },
+    "39": {
+      "classe": "pessoa",
+      "quadros_detectados": 18,
+      "confianca_maxima": 0.4633,
+      "primeiro_quadro": 48,
+      "ultimo_quadro": 66,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "42": {
+      "classe": "pessoa",
+      "quadros_detectados": 4,
+      "confianca_maxima": 0.3195,
+      "primeiro_quadro": 50,
+      "ultimo_quadro": 54,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "50": {
+      "classe": "caminhão",
+      "quadros_detectados": 2,
+      "confianca_maxima": 0.8265,
+      "primeiro_quadro": 57,
+      "ultimo_quadro": 58,
+      "ultima_posicao_no_quadro": "direita",
+      "ultima_faixa_estimada": "centro"
+    },
+    "54": {
+      "classe": "carro",
+      "quadros_detectados": 9,
+      "confianca_maxima": 0.4989,
+      "primeiro_quadro": 61,
+      "ultimo_quadro": 69,
+      "ultima_posicao_no_quadro": "centro",
+      "ultima_faixa_estimada": "centro"
+    },
+    "59": {
+      "classe": "pessoa",
+      "quadros_detectados": 3,
+      "confianca_maxima": 0.3422,
+      "primeiro_quadro": 67,
+      "ultimo_quadro": 70,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "62": {
+      "classe": "ônibus",
+      "quadros_detectados": 42,
+      "confianca_maxima": 0.7827,
+      "primeiro_quadro": 69,
+      "ultimo_quadro": 144,
+      "ultima_posicao_no_quadro": "centro",
+      "ultima_faixa_estimada": "direita"
+    },
+    "66": {
+      "classe": "pessoa",
+      "quadros_detectados": 26,
+      "confianca_maxima": 0.4608,
+      "primeiro_quadro": 71,
+      "ultimo_quadro": 134,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "67": {
+      "classe": "semáforo",
+      "quadros_detectados": 66,
+      "confianca_maxima": 0.8058,
+      "primeiro_quadro": 71,
+      "ultimo_quadro": 176,
+      "ultima_posicao_no_quadro": "direita"
+    },
+    "71": {
+      "classe": "pessoa",
+      "quadros_detectados": 13,
+      "confianca_maxima": 0.3634,
+      "primeiro_quadro": 74,
+      "ultimo_quadro": 93,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "81": {
+      "classe": "pessoa",
+      "quadros_detectados": 78,
+      "confianca_maxima": 0.8045,
+      "primeiro_quadro": 78,
+      "ultimo_quadro": 165,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "82": {
+      "classe": "ônibus",
+      "quadros_detectados": 6,
+      "confianca_maxima": 0.4676,
+      "primeiro_quadro": 79,
+      "ultimo_quadro": 84,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "88": {
+      "classe": "pessoa",
+      "quadros_detectados": 12,
+      "confianca_maxima": 0.4064,
+      "primeiro_quadro": 81,
+      "ultimo_quadro": 94,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "109": {
+      "classe": "caminhão",
+      "quadros_detectados": 2,
+      "confianca_maxima": 0.662,
+      "primeiro_quadro": 89,
+      "ultimo_quadro": 90,
+      "ultima_posicao_no_quadro": "direita"
+    },
+    "111": {
+      "classe": "bicicleta",
+      "quadros_detectados": 143,
+      "confianca_maxima": 0.9045,
+      "primeiro_quadro": 89,
+      "ultimo_quadro": 231,
+      "ultima_posicao_no_quadro": "direita",
+      "ultima_faixa_estimada": "esquerda"
+    },
+    "112": {
+      "classe": "pessoa",
+      "quadros_detectados": 86,
+      "confianca_maxima": 0.8641,
+      "primeiro_quadro": 90,
+      "ultimo_quadro": 175,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "114": {
+      "classe": "caminhão",
+      "quadros_detectados": 10,
+      "confianca_maxima": 0.6909,
+      "primeiro_quadro": 94,
+      "ultimo_quadro": 103,
+      "ultima_posicao_no_quadro": "direita",
+      "ultima_faixa_estimada": "direita"
+    },
+    "122": {
+      "classe": "bicicleta",
+      "quadros_detectados": 11,
+      "confianca_maxima": 0.4371,
+      "primeiro_quadro": 104,
+      "ultimo_quadro": 115,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "125": {
+      "classe": "pessoa",
+      "quadros_detectados": 4,
+      "confianca_maxima": 0.4905,
+      "primeiro_quadro": 106,
+      "ultimo_quadro": 110,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "126": {
+      "classe": "caminhão",
+      "quadros_detectados": 1,
+      "confianca_maxima": 0.3739,
+      "primeiro_quadro": 107,
+      "ultimo_quadro": 107,
+      "ultima_posicao_no_quadro": "direita"
+    },
+    "128": {
+      "classe": "caminhão",
+      "quadros_detectados": 7,
+      "confianca_maxima": 0.7983,
+      "primeiro_quadro": 110,
+      "ultimo_quadro": 116,
+      "ultima_posicao_no_quadro": "direita"
+    },
+    "129": {
+      "classe": "carro",
+      "quadros_detectados": 13,
+      "confianca_maxima": 0.5199,
+      "primeiro_quadro": 112,
+      "ultimo_quadro": 125,
+      "ultima_posicao_no_quadro": "centro",
+      "ultima_faixa_estimada": "esquerda"
+    },
+    "131": {
+      "classe": "pessoa",
+      "quadros_detectados": 3,
+      "confianca_maxima": 0.384,
+      "primeiro_quadro": 112,
+      "ultimo_quadro": 123,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "141": {
+      "classe": "ônibus",
+      "quadros_detectados": 10,
+      "confianca_maxima": 0.3893,
+      "primeiro_quadro": 116,
+      "ultimo_quadro": 140,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "142": {
+      "classe": "pessoa",
+      "quadros_detectados": 2,
+      "confianca_maxima": 0.4614,
+      "primeiro_quadro": 118,
+      "ultimo_quadro": 119,
+      "ultima_posicao_no_quadro": "direita"
+    },
+    "149": {
+      "classe": "semáforo",
+      "quadros_detectados": 58,
+      "confianca_maxima": 0.6214,
+      "primeiro_quadro": 121,
+      "ultimo_quadro": 205,
+      "ultima_posicao_no_quadro": "direita"
+    },
+    "154": {
+      "classe": "pessoa",
+      "quadros_detectados": 95,
+      "confianca_maxima": 0.8095,
+      "primeiro_quadro": 124,
+      "ultimo_quadro": 221,
+      "ultima_posicao_no_quadro": "direita"
+    },
+    "169": {
+      "classe": "pessoa",
+      "quadros_detectados": 70,
+      "confianca_maxima": 0.538,
+      "primeiro_quadro": 128,
+      "ultimo_quadro": 231,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "171": {
+      "classe": "bicicleta",
+      "quadros_detectados": 33,
+      "confianca_maxima": 0.7575,
+      "primeiro_quadro": 129,
+      "ultimo_quadro": 161,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "173": {
+      "classe": "ônibus",
+      "quadros_detectados": 2,
+      "confianca_maxima": 0.4025,
+      "primeiro_quadro": 130,
+      "ultimo_quadro": 131,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "175": {
+      "classe": "pessoa",
+      "quadros_detectados": 1,
+      "confianca_maxima": 0.4043,
+      "primeiro_quadro": 130,
+      "ultimo_quadro": 130,
+      "ultima_posicao_no_quadro": "direita"
+    },
+    "178": {
+      "classe": "pessoa",
+      "quadros_detectados": 7,
+      "confianca_maxima": 0.5222,
+      "primeiro_quadro": 131,
+      "ultimo_quadro": 137,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "181": {
+      "classe": "caminhão",
+      "quadros_detectados": 4,
+      "confianca_maxima": 0.4166,
+      "primeiro_quadro": 131,
+      "ultimo_quadro": 144,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "199": {
+      "classe": "bicicleta",
+      "quadros_detectados": 3,
+      "confianca_maxima": 0.4641,
+      "primeiro_quadro": 143,
+      "ultimo_quadro": 145,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "215": {
+      "classe": "bicicleta",
+      "quadros_detectados": 4,
+      "confianca_maxima": 0.5921,
+      "primeiro_quadro": 151,
+      "ultimo_quadro": 154,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "227": {
+      "classe": "bicicleta",
+      "quadros_detectados": 23,
+      "confianca_maxima": 0.8705,
+      "primeiro_quadro": 154,
+      "ultimo_quadro": 176,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "230": {
+      "classe": "pessoa",
+      "quadros_detectados": 48,
+      "confianca_maxima": 0.7968,
+      "primeiro_quadro": 155,
+      "ultimo_quadro": 203,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "231": {
+      "classe": "bicicleta",
+      "quadros_detectados": 7,
+      "confianca_maxima": 0.6969,
+      "primeiro_quadro": 157,
+      "ultimo_quadro": 165,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "237": {
+      "classe": "semáforo",
+      "quadros_detectados": 1,
+      "confianca_maxima": 0.3739,
+      "primeiro_quadro": 159,
+      "ultimo_quadro": 159,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "244": {
+      "classe": "semáforo",
+      "quadros_detectados": 5,
+      "confianca_maxima": 0.4238,
+      "primeiro_quadro": 162,
+      "ultimo_quadro": 167,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "246": {
+      "classe": "carro",
+      "quadros_detectados": 181,
+      "confianca_maxima": 0.6934,
+      "primeiro_quadro": 163,
+      "ultimo_quadro": 357,
+      "ultima_posicao_no_quadro": "centro",
+      "ultima_faixa_estimada": "esquerda"
+    },
+    "248": {
+      "classe": "pessoa",
+      "quadros_detectados": 3,
+      "confianca_maxima": 0.3746,
+      "primeiro_quadro": 163,
+      "ultimo_quadro": 165,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "249": {
+      "classe": "semáforo",
+      "quadros_detectados": 2,
+      "confianca_maxima": 0.4369,
+      "primeiro_quadro": 164,
+      "ultimo_quadro": 165,
+      "ultima_posicao_no_quadro": "direita"
+    },
+    "253": {
+      "classe": "semáforo",
+      "quadros_detectados": 2,
+      "confianca_maxima": 0.4667,
+      "primeiro_quadro": 166,
+      "ultimo_quadro": 167,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "271": {
+      "classe": "semáforo",
+      "quadros_detectados": 3,
+      "confianca_maxima": 0.3652,
+      "primeiro_quadro": 170,
+      "ultimo_quadro": 172,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "273": {
+      "classe": "bicicleta",
+      "quadros_detectados": 1,
+      "confianca_maxima": 0.3892,
+      "primeiro_quadro": 170,
+      "ultimo_quadro": 170,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "274": {
+      "classe": "pessoa",
+      "quadros_detectados": 39,
+      "confianca_maxima": 0.6452,
+      "primeiro_quadro": 170,
+      "ultimo_quadro": 215,
+      "ultima_posicao_no_quadro": "direita"
+    },
+    "286": {
+      "classe": "bicicleta",
+      "quadros_detectados": 27,
+      "confianca_maxima": 0.7902,
+      "primeiro_quadro": 177,
+      "ultimo_quadro": 203,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "326": {
+      "classe": "semáforo",
+      "quadros_detectados": 1,
+      "confianca_maxima": 0.4427,
+      "primeiro_quadro": 193,
+      "ultimo_quadro": 193,
+      "ultima_posicao_no_quadro": "direita"
+    },
+    "346": {
+      "classe": "pessoa",
+      "quadros_detectados": 30,
+      "confianca_maxima": 0.6504,
+      "primeiro_quadro": 202,
+      "ultimo_quadro": 237,
+      "ultima_posicao_no_quadro": "direita"
+    },
+    "365": {
+      "classe": "bicicleta",
+      "quadros_detectados": 1,
+      "confianca_maxima": 0.4785,
+      "primeiro_quadro": 233,
+      "ultimo_quadro": 233,
+      "ultima_posicao_no_quadro": "direita"
+    },
+    "372": {
+      "classe": "carro",
+      "quadros_detectados": 3,
+      "confianca_maxima": 0.3714,
+      "primeiro_quadro": 244,
+      "ultimo_quadro": 247,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "373": {
+      "classe": "carro",
+      "quadros_detectados": 275,
+      "confianca_maxima": 0.9177,
+      "primeiro_quadro": 244,
+      "ultimo_quadro": 527,
+      "ultima_posicao_no_quadro": "esquerda",
+      "ultima_faixa_estimada": "esquerda"
+    },
+    "374": {
+      "classe": "carro",
+      "quadros_detectados": 287,
+      "confianca_maxima": 0.8028,
+      "primeiro_quadro": 244,
+      "ultimo_quadro": 557,
+      "ultima_posicao_no_quadro": "direita",
+      "ultima_faixa_estimada": "direita"
+    },
+    "377": {
+      "classe": "semáforo",
+      "quadros_detectados": 4,
+      "confianca_maxima": 0.7671,
+      "primeiro_quadro": 253,
+      "ultimo_quadro": 256,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "378": {
+      "classe": "carro",
+      "quadros_detectados": 9,
+      "confianca_maxima": 0.3982,
+      "primeiro_quadro": 258,
+      "ultimo_quadro": 272,
+      "ultima_posicao_no_quadro": "centro",
+      "ultima_faixa_estimada": "esquerda"
+    },
+    "387": {
+      "classe": "pessoa",
+      "quadros_detectados": 8,
+      "confianca_maxima": 0.4601,
+      "primeiro_quadro": 272,
+      "ultimo_quadro": 284,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "388": {
+      "classe": "pessoa",
+      "quadros_detectados": 23,
+      "confianca_maxima": 0.5318,
+      "primeiro_quadro": 272,
+      "ultimo_quadro": 326,
+      "ultima_posicao_no_quadro": "centro",
+      "ultima_faixa_estimada": "centro"
+    },
+    "402": {
+      "classe": "carro",
+      "quadros_detectados": 12,
+      "confianca_maxima": 0.4765,
+      "primeiro_quadro": 284,
+      "ultimo_quadro": 300,
+      "ultima_posicao_no_quadro": "centro",
+      "ultima_faixa_estimada": "direita"
+    },
+    "404": {
+      "classe": "carro",
+      "quadros_detectados": 2,
+      "confianca_maxima": 0.3339,
+      "primeiro_quadro": 286,
+      "ultimo_quadro": 291,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "411": {
+      "classe": "pessoa",
+      "quadros_detectados": 1,
+      "confianca_maxima": 0.3497,
+      "primeiro_quadro": 303,
+      "ultimo_quadro": 303,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "427": {
+      "classe": "pessoa",
+      "quadros_detectados": 61,
+      "confianca_maxima": 0.6232,
+      "primeiro_quadro": 328,
+      "ultimo_quadro": 412,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "432": {
+      "classe": "carro",
+      "quadros_detectados": 57,
+      "confianca_maxima": 0.4982,
+      "primeiro_quadro": 330,
+      "ultimo_quadro": 387,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "436": {
+      "classe": "carro",
+      "quadros_detectados": 8,
+      "confianca_maxima": 0.4075,
+      "primeiro_quadro": 332,
+      "ultimo_quadro": 348,
+      "ultima_posicao_no_quadro": "centro",
+      "ultima_faixa_estimada": "centro"
+    },
+    "449": {
+      "classe": "caminhão",
+      "quadros_detectados": 3,
+      "confianca_maxima": 0.4515,
+      "primeiro_quadro": 343,
+      "ultimo_quadro": 356,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "454": {
+      "classe": "carro",
+      "quadros_detectados": 17,
+      "confianca_maxima": 0.4054,
+      "primeiro_quadro": 358,
+      "ultimo_quadro": 382,
+      "ultima_posicao_no_quadro": "centro",
+      "ultima_faixa_estimada": "esquerda"
+    },
+    "456": {
+      "classe": "semáforo",
+      "quadros_detectados": 129,
+      "confianca_maxima": 0.7767,
+      "primeiro_quadro": 359,
+      "ultimo_quadro": 490,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "465": {
+      "classe": "pessoa",
+      "quadros_detectados": 3,
+      "confianca_maxima": 0.3389,
+      "primeiro_quadro": 371,
+      "ultimo_quadro": 375,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "468": {
+      "classe": "carro",
+      "quadros_detectados": 26,
+      "confianca_maxima": 0.4896,
+      "primeiro_quadro": 375,
+      "ultimo_quadro": 401,
+      "ultima_posicao_no_quadro": "centro",
+      "ultima_faixa_estimada": "centro"
+    },
+    "476": {
+      "classe": "carro",
+      "quadros_detectados": 75,
+      "confianca_maxima": 0.7099,
+      "primeiro_quadro": 382,
+      "ultimo_quadro": 479,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "480": {
+      "classe": "pessoa",
+      "quadros_detectados": 13,
+      "confianca_maxima": 0.5894,
+      "primeiro_quadro": 392,
+      "ultimo_quadro": 404,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "481": {
+      "classe": "carro",
+      "quadros_detectados": 88,
+      "confianca_maxima": 0.6484,
+      "primeiro_quadro": 393,
+      "ultimo_quadro": 488,
+      "ultima_posicao_no_quadro": "centro",
+      "ultima_faixa_estimada": "esquerda"
+    },
+    "485": {
+      "classe": "pessoa",
+      "quadros_detectados": 8,
+      "confianca_maxima": 0.5645,
+      "primeiro_quadro": 397,
+      "ultimo_quadro": 404,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "499": {
+      "classe": "carro",
+      "quadros_detectados": 2,
+      "confianca_maxima": 0.346,
+      "primeiro_quadro": 415,
+      "ultimo_quadro": 416,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "500": {
+      "classe": "carro",
+      "quadros_detectados": 16,
+      "confianca_maxima": 0.4866,
+      "primeiro_quadro": 416,
+      "ultimo_quadro": 445,
+      "ultima_posicao_no_quadro": "centro",
+      "ultima_faixa_estimada": "direita"
+    },
+    "504": {
+      "classe": "pessoa",
+      "quadros_detectados": 1,
+      "confianca_maxima": 0.5714,
+      "primeiro_quadro": 418,
+      "ultimo_quadro": 418,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "507": {
+      "classe": "carro",
+      "quadros_detectados": 1,
+      "confianca_maxima": 0.5026,
+      "primeiro_quadro": 421,
+      "ultimo_quadro": 421,
+      "ultima_posicao_no_quadro": "direita"
+    },
+    "524": {
+      "classe": "carro",
+      "quadros_detectados": 3,
+      "confianca_maxima": 0.3528,
+      "primeiro_quadro": 429,
+      "ultimo_quadro": 431,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "528": {
+      "classe": "carro",
+      "quadros_detectados": 2,
+      "confianca_maxima": 0.3387,
+      "primeiro_quadro": 430,
+      "ultimo_quadro": 431,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "540": {
+      "classe": "carro",
+      "quadros_detectados": 1,
+      "confianca_maxima": 0.3553,
+      "primeiro_quadro": 435,
+      "ultimo_quadro": 435,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "546": {
+      "classe": "carro",
+      "quadros_detectados": 121,
+      "confianca_maxima": 0.9101,
+      "primeiro_quadro": 437,
+      "ultimo_quadro": 557,
+      "ultima_posicao_no_quadro": "esquerda",
+      "ultima_faixa_estimada": "esquerda"
+    },
+    "549": {
+      "classe": "carro",
+      "quadros_detectados": 88,
+      "confianca_maxima": 0.6918,
+      "primeiro_quadro": 438,
+      "ultimo_quadro": 526,
+      "ultima_posicao_no_quadro": "centro",
+      "ultima_faixa_estimada": "esquerda"
+    },
+    "555": {
+      "classe": "bicicleta",
+      "quadros_detectados": 23,
+      "confianca_maxima": 0.7043,
+      "primeiro_quadro": 448,
+      "ultimo_quadro": 472,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "572": {
+      "classe": "pessoa",
+      "quadros_detectados": 19,
+      "confianca_maxima": 0.705,
+      "primeiro_quadro": 455,
+      "ultimo_quadro": 474,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "587": {
+      "classe": "pessoa",
+      "quadros_detectados": 5,
+      "confianca_maxima": 0.4338,
+      "primeiro_quadro": 466,
+      "ultimo_quadro": 475,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "590": {
+      "classe": "carro",
+      "quadros_detectados": 13,
+      "confianca_maxima": 0.6217,
+      "primeiro_quadro": 467,
+      "ultimo_quadro": 486,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "596": {
+      "classe": "carro",
+      "quadros_detectados": 18,
+      "confianca_maxima": 0.6802,
+      "primeiro_quadro": 469,
+      "ultimo_quadro": 493,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "599": {
+      "classe": "pessoa",
+      "quadros_detectados": 35,
+      "confianca_maxima": 0.6254,
+      "primeiro_quadro": 471,
+      "ultimo_quadro": 524,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "601": {
+      "classe": "semáforo",
+      "quadros_detectados": 74,
+      "confianca_maxima": 0.7752,
+      "primeiro_quadro": 471,
+      "ultimo_quadro": 550,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "602": {
+      "classe": "semáforo",
+      "quadros_detectados": 20,
+      "confianca_maxima": 0.7644,
+      "primeiro_quadro": 472,
+      "ultimo_quadro": 497,
+      "ultima_posicao_no_quadro": "direita"
+    },
+    "612": {
+      "classe": "pessoa",
+      "quadros_detectados": 2,
+      "confianca_maxima": 0.3593,
+      "primeiro_quadro": 478,
+      "ultimo_quadro": 479,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "618": {
+      "classe": "carro",
+      "quadros_detectados": 4,
+      "confianca_maxima": 0.3542,
+      "primeiro_quadro": 482,
+      "ultimo_quadro": 485,
+      "ultima_posicao_no_quadro": "centro",
+      "ultima_faixa_estimada": "direita"
+    },
+    "632": {
+      "classe": "pessoa",
+      "quadros_detectados": 14,
+      "confianca_maxima": 0.6429,
+      "primeiro_quadro": 491,
+      "ultimo_quadro": 505,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "637": {
+      "classe": "pessoa",
+      "quadros_detectados": 12,
+      "confianca_maxima": 0.682,
+      "primeiro_quadro": 494,
+      "ultimo_quadro": 505,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "644": {
+      "classe": "pessoa",
+      "quadros_detectados": 2,
+      "confianca_maxima": 0.467,
+      "primeiro_quadro": 499,
+      "ultimo_quadro": 500,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "654": {
+      "classe": "semáforo",
+      "quadros_detectados": 19,
+      "confianca_maxima": 0.768,
+      "primeiro_quadro": 511,
+      "ultimo_quadro": 531,
+      "ultima_posicao_no_quadro": "direita"
+    },
+    "675": {
+      "classe": "carro",
+      "quadros_detectados": 12,
+      "confianca_maxima": 0.7344,
+      "primeiro_quadro": 521,
+      "ultimo_quadro": 532,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "677": {
+      "classe": "carro",
+      "quadros_detectados": 1,
+      "confianca_maxima": 0.3787,
+      "primeiro_quadro": 521,
+      "ultimo_quadro": 521,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "699": {
+      "classe": "carro",
+      "quadros_detectados": 30,
+      "confianca_maxima": 0.7527,
+      "primeiro_quadro": 528,
+      "ultimo_quadro": 557,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "701": {
+      "classe": "carro",
+      "quadros_detectados": 6,
+      "confianca_maxima": 0.5616,
+      "primeiro_quadro": 529,
+      "ultimo_quadro": 534,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "702": {
+      "classe": "carro",
+      "quadros_detectados": 14,
+      "confianca_maxima": 0.7709,
+      "primeiro_quadro": 529,
+      "ultimo_quadro": 542,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "706": {
+      "classe": "semáforo",
+      "quadros_detectados": 4,
+      "confianca_maxima": 0.4594,
+      "primeiro_quadro": 530,
+      "ultimo_quadro": 533,
+      "ultima_posicao_no_quadro": "direita"
+    },
+    "720": {
+      "classe": "carro",
+      "quadros_detectados": 22,
+      "confianca_maxima": 0.7296,
+      "primeiro_quadro": 536,
+      "ultimo_quadro": 557,
+      "ultima_posicao_no_quadro": "centro",
+      "ultima_faixa_estimada": "esquerda"
+    },
+    "731": {
+      "classe": "carro",
+      "quadros_detectados": 1,
+      "confianca_maxima": 0.4631,
+      "primeiro_quadro": 540,
+      "ultimo_quadro": 540,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "739": {
+      "classe": "pessoa",
+      "quadros_detectados": 6,
+      "confianca_maxima": 0.4651,
+      "primeiro_quadro": 544,
+      "ultimo_quadro": 556,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "746": {
+      "classe": "carro",
+      "quadros_detectados": 9,
+      "confianca_maxima": 0.7371,
+      "primeiro_quadro": 549,
+      "ultimo_quadro": 557,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "748": {
+      "classe": "semáforo",
+      "quadros_detectados": 3,
+      "confianca_maxima": 0.4346,
+      "primeiro_quadro": 549,
+      "ultimo_quadro": 551,
+      "ultima_posicao_no_quadro": "centro"
+    },
+    "756": {
+      "classe": "semáforo",
+      "quadros_detectados": 5,
+      "confianca_maxima": 0.619,
+      "primeiro_quadro": 553,
+      "ultimo_quadro": 557,
+      "ultima_posicao_no_quadro": "esquerda"
+    },
+    "763": {
+      "classe": "pessoa",
+      "quadros_detectados": 3,
+      "confianca_maxima": 0.4532,
+      "primeiro_quadro": 554,
+      "ultimo_quadro": 557,
+      "ultima_posicao_no_quadro": "direita"
+    },
+    "766": {
+      "classe": "bicicleta",
+      "quadros_detectados": 3,
+      "confianca_maxima": 0.4884,
+      "primeiro_quadro": 555,
+      "ultimo_quadro": 557,
+      "ultima_posicao_no_quadro": "direita"
+    },
+    "770": {
+      "classe": "pessoa",
+      "quadros_detectados": 3,
+      "confianca_maxima": 0.5803,
+      "primeiro_quadro": 555,
+      "ultimo_quadro": 557,
+      "ultima_posicao_no_quadro": "direita"
+    },
+    "771": {
+      "classe": "caminhão",
+      "quadros_detectados": 2,
+      "confianca_maxima": 0.4618,
+      "primeiro_quadro": 556,
+      "ultimo_quadro": 557,
+      "ultima_posicao_no_quadro": "centro"
+    }
+  },
+  "eventos": [],
+  "descricao": [
+    "Semáforo #1 apareceu em 86 quadro(s); última posição: direita do quadro.",
+    "Ônibus #2 apareceu em 143 quadro(s); última posição: faixa direita estimada.",
+    "Pessoa #3 apareceu em 69 quadro(s); última posição: centro do quadro.",
+    "Semáforo #4 apareceu em 123 quadro(s); última posição: centro do quadro.",
+    "Pessoa #5 apareceu em 3 quadro(s); última posição: centro do quadro.",
+    "Pessoa #6 apareceu em 4 quadro(s); última posição: centro do quadro.",
+    "Pessoa #7 apareceu em 4 quadro(s); última posição: direita do quadro.",
+    "Pessoa #8 apareceu em 2 quadro(s); última posição: centro do quadro.",
+    "Pessoa #9 apareceu em 2 quadro(s); última posição: centro do quadro.",
+    "Pessoa #10 apareceu em 59 quadro(s); última posição: centro do quadro.",
+    "Pessoa #23 apareceu em 123 quadro(s); última posição: esquerda do quadro.",
+    "Carro #35 apareceu em 4 quadro(s); última posição: faixa esquerda estimada.",
+    "Pessoa #39 apareceu em 18 quadro(s); última posição: centro do quadro.",
+    "Pessoa #42 apareceu em 4 quadro(s); última posição: centro do quadro.",
+    "Caminhão #50 apareceu em 2 quadro(s); última posição: faixa centro estimada.",
+    "Carro #54 apareceu em 9 quadro(s); última posição: faixa centro estimada.",
+    "Pessoa #59 apareceu em 3 quadro(s); última posição: centro do quadro.",
+    "Ônibus #62 apareceu em 42 quadro(s); última posição: faixa direita estimada.",
+    "Pessoa #66 apareceu em 26 quadro(s); última posição: centro do quadro.",
+    "Semáforo #67 apareceu em 66 quadro(s); última posição: direita do quadro.",
+    "Pessoa #71 apareceu em 13 quadro(s); última posição: centro do quadro.",
+    "Pessoa #81 apareceu em 78 quadro(s); última posição: esquerda do quadro.",
+    "Ônibus #82 apareceu em 6 quadro(s); última posição: esquerda do quadro.",
+    "Pessoa #88 apareceu em 12 quadro(s); última posição: centro do quadro.",
+    "Caminhão #109 apareceu em 2 quadro(s); última posição: direita do quadro.",
+    "Bicicleta #111 apareceu em 143 quadro(s); última posição: faixa esquerda estimada.",
+    "Pessoa #112 apareceu em 86 quadro(s); última posição: esquerda do quadro.",
+    "Caminhão #114 apareceu em 10 quadro(s); última posição: faixa direita estimada.",
+    "Bicicleta #122 apareceu em 11 quadro(s); última posição: centro do quadro.",
+    "Pessoa #125 apareceu em 4 quadro(s); última posição: centro do quadro.",
+    "Caminhão #126 apareceu em 1 quadro(s); última posição: direita do quadro.",
+    "Caminhão #128 apareceu em 7 quadro(s); última posição: direita do quadro.",
+    "Carro #129 apareceu em 13 quadro(s); última posição: faixa esquerda estimada.",
+    "Pessoa #131 apareceu em 3 quadro(s); última posição: centro do quadro.",
+    "Ônibus #141 apareceu em 10 quadro(s); última posição: centro do quadro.",
+    "Pessoa #142 apareceu em 2 quadro(s); última posição: direita do quadro.",
+    "Semáforo #149 apareceu em 58 quadro(s); última posição: direita do quadro.",
+    "Pessoa #154 apareceu em 95 quadro(s); última posição: direita do quadro.",
+    "Pessoa #169 apareceu em 70 quadro(s); última posição: centro do quadro.",
+    "Bicicleta #171 apareceu em 33 quadro(s); última posição: esquerda do quadro.",
+    "Ônibus #173 apareceu em 2 quadro(s); última posição: esquerda do quadro.",
+    "Pessoa #175 apareceu em 1 quadro(s); última posição: direita do quadro.",
+    "Pessoa #178 apareceu em 7 quadro(s); última posição: centro do quadro.",
+    "Caminhão #181 apareceu em 4 quadro(s); última posição: esquerda do quadro.",
+    "Bicicleta #199 apareceu em 3 quadro(s); última posição: esquerda do quadro.",
+    "Bicicleta #215 apareceu em 4 quadro(s); última posição: esquerda do quadro.",
+    "Bicicleta #227 apareceu em 23 quadro(s); última posição: esquerda do quadro.",
+    "Pessoa #230 apareceu em 48 quadro(s); última posição: esquerda do quadro.",
+    "Bicicleta #231 apareceu em 7 quadro(s); última posição: esquerda do quadro.",
+    "Semáforo #237 apareceu em 1 quadro(s); última posição: centro do quadro.",
+    "Semáforo #244 apareceu em 5 quadro(s); última posição: centro do quadro.",
+    "Carro #246 apareceu em 181 quadro(s); última posição: faixa esquerda estimada.",
+    "Pessoa #248 apareceu em 3 quadro(s); última posição: centro do quadro.",
+    "Semáforo #249 apareceu em 2 quadro(s); última posição: direita do quadro.",
+    "Semáforo #253 apareceu em 2 quadro(s); última posição: esquerda do quadro.",
+    "Semáforo #271 apareceu em 3 quadro(s); última posição: esquerda do quadro.",
+    "Bicicleta #273 apareceu em 1 quadro(s); última posição: esquerda do quadro.",
+    "Pessoa #274 apareceu em 39 quadro(s); última posição: direita do quadro.",
+    "Bicicleta #286 apareceu em 27 quadro(s); última posição: esquerda do quadro.",
+    "Semáforo #326 apareceu em 1 quadro(s); última posição: direita do quadro.",
+    "Pessoa #346 apareceu em 30 quadro(s); última posição: direita do quadro.",
+    "Bicicleta #365 apareceu em 1 quadro(s); última posição: direita do quadro.",
+    "Carro #372 apareceu em 3 quadro(s); última posição: centro do quadro.",
+    "Carro #373 apareceu em 275 quadro(s); última posição: faixa esquerda estimada.",
+    "Carro #374 apareceu em 287 quadro(s); última posição: faixa direita estimada.",
+    "Semáforo #377 apareceu em 4 quadro(s); última posição: centro do quadro.",
+    "Carro #378 apareceu em 9 quadro(s); última posição: faixa esquerda estimada.",
+    "Pessoa #387 apareceu em 8 quadro(s); última posição: centro do quadro.",
+    "Pessoa #388 apareceu em 23 quadro(s); última posição: faixa centro estimada.",
+    "Carro #402 apareceu em 12 quadro(s); última posição: faixa direita estimada.",
+    "Carro #404 apareceu em 2 quadro(s); última posição: centro do quadro.",
+    "Pessoa #411 apareceu em 1 quadro(s); última posição: centro do quadro.",
+    "Pessoa #427 apareceu em 61 quadro(s); última posição: centro do quadro.",
+    "Carro #432 apareceu em 57 quadro(s); última posição: centro do quadro.",
+    "Carro #436 apareceu em 8 quadro(s); última posição: faixa centro estimada.",
+    "Caminhão #449 apareceu em 3 quadro(s); última posição: esquerda do quadro.",
+    "Carro #454 apareceu em 17 quadro(s); última posição: faixa esquerda estimada.",
+    "Semáforo #456 apareceu em 129 quadro(s); última posição: centro do quadro.",
+    "Pessoa #465 apareceu em 3 quadro(s); última posição: centro do quadro.",
+    "Carro #468 apareceu em 26 quadro(s); última posição: faixa centro estimada.",
+    "Carro #476 apareceu em 75 quadro(s); última posição: esquerda do quadro.",
+    "Pessoa #480 apareceu em 13 quadro(s); última posição: esquerda do quadro.",
+    "Carro #481 apareceu em 88 quadro(s); última posição: faixa esquerda estimada.",
+    "Pessoa #485 apareceu em 8 quadro(s); última posição: esquerda do quadro.",
+    "Carro #499 apareceu em 2 quadro(s); última posição: centro do quadro.",
+    "Carro #500 apareceu em 16 quadro(s); última posição: faixa direita estimada.",
+    "Pessoa #504 apareceu em 1 quadro(s); última posição: centro do quadro.",
+    "Carro #507 apareceu em 1 quadro(s); última posição: direita do quadro.",
+    "Carro #524 apareceu em 3 quadro(s); última posição: esquerda do quadro.",
+    "Carro #528 apareceu em 2 quadro(s); última posição: esquerda do quadro.",
+    "Carro #540 apareceu em 1 quadro(s); última posição: centro do quadro.",
+    "Carro #546 apareceu em 121 quadro(s); última posição: faixa esquerda estimada.",
+    "Carro #549 apareceu em 88 quadro(s); última posição: faixa esquerda estimada.",
+    "Bicicleta #555 apareceu em 23 quadro(s); última posição: esquerda do quadro.",
+    "Pessoa #572 apareceu em 19 quadro(s); última posição: esquerda do quadro.",
+    "Pessoa #587 apareceu em 5 quadro(s); última posição: centro do quadro.",
+    "Carro #590 apareceu em 13 quadro(s); última posição: esquerda do quadro.",
+    "Carro #596 apareceu em 18 quadro(s); última posição: esquerda do quadro.",
+    "Pessoa #599 apareceu em 35 quadro(s); última posição: centro do quadro.",
+    "Semáforo #601 apareceu em 74 quadro(s); última posição: centro do quadro.",
+    "Semáforo #602 apareceu em 20 quadro(s); última posição: direita do quadro.",
+    "Pessoa #612 apareceu em 2 quadro(s); última posição: centro do quadro.",
+    "Carro #618 apareceu em 4 quadro(s); última posição: faixa direita estimada.",
+    "Pessoa #632 apareceu em 14 quadro(s); última posição: esquerda do quadro.",
+    "Pessoa #637 apareceu em 12 quadro(s); última posição: centro do quadro.",
+    "Pessoa #644 apareceu em 2 quadro(s); última posição: centro do quadro.",
+    "Semáforo #654 apareceu em 19 quadro(s); última posição: direita do quadro.",
+    "Carro #675 apareceu em 12 quadro(s); última posição: esquerda do quadro.",
+    "Carro #677 apareceu em 1 quadro(s); última posição: esquerda do quadro.",
+    "Carro #699 apareceu em 30 quadro(s); última posição: centro do quadro.",
+    "Carro #701 apareceu em 6 quadro(s); última posição: centro do quadro.",
+    "Carro #702 apareceu em 14 quadro(s); última posição: esquerda do quadro.",
+    "Semáforo #706 apareceu em 4 quadro(s); última posição: direita do quadro.",
+    "Carro #720 apareceu em 22 quadro(s); última posição: faixa esquerda estimada.",
+    "Carro #731 apareceu em 1 quadro(s); última posição: esquerda do quadro.",
+    "Pessoa #739 apareceu em 6 quadro(s); última posição: centro do quadro.",
+    "Carro #746 apareceu em 9 quadro(s); última posição: esquerda do quadro.",
+    "Semáforo #748 apareceu em 3 quadro(s); última posição: centro do quadro.",
+    "Semáforo #756 apareceu em 5 quadro(s); última posição: esquerda do quadro.",
+    "Pessoa #763 apareceu em 3 quadro(s); última posição: direita do quadro.",
+    "Bicicleta #766 apareceu em 3 quadro(s); última posição: direita do quadro.",
+    "Pessoa #770 apareceu em 3 quadro(s); última posição: direita do quadro.",
+    "Caminhão #771 apareceu em 2 quadro(s); última posição: centro do quadro."
+  ],
+  "limitacoes": [
+    "A faixa é estimada por linhas retas e pode estar incorreta; ela não é segmentada.",
+    "A passagem por sinal supõe movimento para a parte inferior de um quadro frontal.",
+    "O evento é uma hipótese geométrica e não confirma a passagem física pelo sinal.",
+    "O modelo não lê a cor do semáforo nem determina preferência ou infração."
+  ]
+}

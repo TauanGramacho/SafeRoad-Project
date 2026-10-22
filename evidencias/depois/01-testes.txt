@@ -1,0 +1,42 @@
+# 21/10/2026 21:01, commit 8d46b4c
+$ python -m unittest discover -s tests -v
+test_commits_writes_and_keeps_reads_read_only (test_client.ClientTests.test_commits_writes_and_keeps_reads_read_only) ... ok
+test_does_not_retry_a_write_after_connection_failure (test_client.ClientTests.test_does_not_retry_a_write_after_connection_failure) ... ok
+test_password_is_not_exposed_in_settings_representation (test_client.ClientTests.test_password_is_not_exposed_in_settings_representation) ... ok
+test_rejects_empty_authentication_token (test_client.ClientTests.test_rejects_empty_authentication_token) ... ok
+test_rejects_invalid_json (test_client.ClientTests.test_rejects_invalid_json) ... ok
+test_rejects_truncated_results (test_client.ClientTests.test_rejects_truncated_results) ... ok
+test_reports_http_error_with_non_json_response (test_client.ClientTests.test_reports_http_error_with_non_json_response) ... ok
+test_image_report (test_integracao_visao.VisionKnowledgeBaseTests.test_image_report) ... ok
+test_knowledge_base_files_exist (test_integracao_visao.VisionKnowledgeBaseTests.test_knowledge_base_files_exist) ... ok
+test_rejects_unknown_file (test_integracao_visao.VisionKnowledgeBaseTests.test_rejects_unknown_file) ... ok
+test_type_missing_from_base (test_integracao_visao.VisionKnowledgeBaseTests.test_type_missing_from_base) ... ok
+test_video_report_counts_each_track_once (test_integracao_visao.VisionKnowledgeBaseTests.test_video_report_counts_each_track_once) ... ok
+test_activity_requirements (test_integration.IntegrationTests.test_activity_requirements) ... ok
+test_incompatible_schema_is_preserved (test_integration.IntegrationTests.test_incompatible_schema_is_preserved) ... ok
+test_inference_changes_when_facts_change (test_integration.IntegrationTests.test_inference_changes_when_facts_change) ... ok
+test_initialization_preserves_existing_examples (test_integration.IntegrationTests.test_initialization_preserves_existing_examples) ... ok
+test_empty_result (test_visao.DetectionsTests.test_empty_result) ... ok
+test_ignores_classes_outside_the_list (test_visao.DetectionsTests.test_ignores_classes_outside_the_list) ... ok
+test_keeps_tracking_id_when_present (test_visao.DetectionsTests.test_keeps_tracking_id_when_present) ... ok
+test_assigns_lane_with_three_boundaries (test_visao.LaneTests.test_assigns_lane_with_three_boundaries) ... ok
+test_ignores_more_than_five_boundaries (test_visao.LaneTests.test_ignores_more_than_five_boundaries) ... ok
+test_needs_at_least_three_boundaries (test_visao.LaneTests.test_needs_at_least_three_boundaries) ... ok
+test_signals_never_receive_a_lane (test_visao.LaneTests.test_signals_never_receive_a_lane) ... ok
+test_divides_frame_in_three_parts (test_visao.PositionTests.test_divides_frame_in_three_parts) ... ok
+test_zero_width_does_not_divide_by_zero (test_visao.PositionTests.test_zero_width_does_not_divide_by_zero) ... ok
+test_old_signals_expire_after_two_seconds (test_visao.SignalEventTests.test_old_signals_expire_after_two_seconds) ... ok
+test_vehicle_crossing_the_signal_line_creates_one_event (test_visao.SignalEventTests.test_vehicle_crossing_the_signal_line_creates_one_event) ... ok
+test_vehicle_far_from_the_signal_is_ignored (test_visao.SignalEventTests.test_vehicle_far_from_the_signal_is_ignored) ... ok
+test_vehicle_without_tracking_id_is_ignored (test_visao.SignalEventTests.test_vehicle_without_tracking_id_is_ignored) ... ok
+test_blank_image_has_no_lines (test_visao.SyntheticLaneImageTests.test_blank_image_has_no_lines) ... ok
+test_finds_the_painted_lines_of_a_synthetic_road (test_visao.SyntheticLaneImageTests.test_finds_the_painted_lines_of_a_synthetic_road) ... ok
+test_default_output_names (test_visao.TextAndPathTests.test_default_output_names) ... ok
+test_describes_frame_position_without_lane (test_visao.TextAndPathTests.test_describes_frame_position_without_lane) ... ok
+test_describes_lane_when_available (test_visao.TextAndPathTests.test_describes_lane_when_available) ... ok
+
+----------------------------------------------------------------------
+Ran 34 tests in 0.704s
+
+OK
+código de saída: 0

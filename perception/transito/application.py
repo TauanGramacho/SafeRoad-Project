@@ -4,7 +4,8 @@ from urllib.parse import quote
 
 from transito.client import Document, TypeDBClient, TypeDBError
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+KNOWLEDGE_BASE_ROOT = PROJECT_ROOT / "knowlodge base"
 REQUIRED_FUNCTIONS = (
     "pilotos",
     "motoristas",
@@ -14,7 +15,7 @@ REQUIRED_FUNCTIONS = (
 
 
 class KnowledgeBase:
-    def __init__(self, client: TypeDBClient, root: Path = PROJECT_ROOT) -> None:
+    def __init__(self, client: TypeDBClient, root: Path = KNOWLEDGE_BASE_ROOT) -> None:
         self.client = client
         self.root = root
 

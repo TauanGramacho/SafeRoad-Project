@@ -1,0 +1,13 @@
+# Commit b75e7e9, 21/10/2026 20:11, TypeDB 3.13.6 via Docker
+$ python prototipo.py iniciar
+Erro: [Errno 2] No such file or directory: '<projeto>/perception/schema.tql'
+código de saída: 1
+
+$ python prototipo.py demonstrar
+Erro: Nenhuma consulta foi encontrada na pasta consultas.
+código de saída: 1
+
+$ python prototipo.py validar
+Erro: Nenhuma consulta foi encontrada na pasta consultas.
+código de saída: 1
+

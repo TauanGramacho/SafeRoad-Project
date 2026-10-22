@@ -1,0 +1,10 @@
+# Commit b75e7e9, 21/10/2026 20:12
+$ python visao.py video ../evidencias/entradas/dashcam-oldenburg.mp4 --saida ../evidencias/antes/video_anotado.mp4
+requirements: Ultralytics requirement ['lap>=0.5.12'] not found, attempting AutoUpdate...
+WARNING ⚠️ Retry 1/2 failed: Command '['python', '-m', 'pip', 'install', '--no-cache-dir', 'lap>=0.5.12']' returned non-zero exit status 1.
+WARNING ⚠️ Retry 2/2 failed: Command '['python', '-m', 'pip', 'install', '--no-cache-dir', 'lap>=0.5.12']' returned non-zero exit status 1.
+WARNING ⚠️ requirements: ❌ Command '['python', '-m', 'pip', 'install', '--no-cache-dir', 'lap>=0.5.12']' returned non-zero exit status 1.
+python: No module named pip
+
+Erro durante a análise: No module named 'lap'
+código de saída: 1

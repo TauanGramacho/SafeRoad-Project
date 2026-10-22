@@ -1,0 +1,26 @@
+# Execução no commit b75e7e9 em 21/10/2026 20:11
+$ PYTHONPATH=perception python3.12 -m unittest discover -s tests -v
+test_commits_writes_and_keeps_reads_read_only (test_client.ClientTests.test_commits_writes_and_keeps_reads_read_only) ... ok
+test_does_not_retry_a_write_after_connection_failure (test_client.ClientTests.test_does_not_retry_a_write_after_connection_failure) ... ok
+test_password_is_not_exposed_in_settings_representation (test_client.ClientTests.test_password_is_not_exposed_in_settings_representation) ... ok
+test_rejects_empty_authentication_token (test_client.ClientTests.test_rejects_empty_authentication_token) ... ok
+test_rejects_invalid_json (test_client.ClientTests.test_rejects_invalid_json) ... ok
+test_rejects_truncated_results (test_client.ClientTests.test_rejects_truncated_results) ... ok
+test_reports_http_error_with_non_json_response (test_client.ClientTests.test_reports_http_error_with_non_json_response) ... ok
+test_activity_requirements (test_integration.IntegrationTests.test_activity_requirements) ... skipped 'Defina TYPEDB_TEST_URL para testar o banco.'
+test_incompatible_schema_is_preserved (test_integration.IntegrationTests.test_incompatible_schema_is_preserved) ... skipped 'Defina TYPEDB_TEST_URL para testar o banco.'
+test_inference_changes_when_facts_change (test_integration.IntegrationTests.test_inference_changes_when_facts_change) ... skipped 'Defina TYPEDB_TEST_URL para testar o banco.'
+test_initialization_preserves_existing_examples (test_integration.IntegrationTests.test_initialization_preserves_existing_examples) ... skipped 'Defina TYPEDB_TEST_URL para testar o banco.'
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.003s
+
+OK (skipped=4)
+código de saída: 0
+
+$ python3.12 -m unittest discover -s tests (sem PYTHONPATH)
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+FAILED (errors=2)

@@ -1,0 +1,26 @@
+# Commit b75e7e9, 21/10/2026 20:15, lint com a configuração que já existia no pyproject.toml
+$ ruff check perception tests
+F821 Undefined name `y1`
+   --> perception/transito/visao.py:351:46
+    |
+349 |             continue
+350 |         x1, _, x2, _ = detection["caixa_xyxy"]
+351 |         center_x, center_y = (x1 + x2) / 2, (y1 + y2) / 2
+    |                                              ^^
+352 |         previous = previous_vehicles.get(track_id)
+353 |         if previous is not None:
+    |
+
+F821 Undefined name `y2`
+   --> perception/transito/visao.py:351:51
+    |
+349 |             continue
+350 |         x1, _, x2, _ = detection["caixa_xyxy"]
+351 |         center_x, center_y = (x1 + x2) / 2, (y1 + y2) / 2
+    |                                                   ^^
+352 |         previous = previous_vehicles.get(track_id)
+353 |         if previous is not None:
+    |
+
+Found 2 errors.
+código de saída: 1

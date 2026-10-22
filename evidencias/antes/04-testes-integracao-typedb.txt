@@ -1,0 +1,35 @@
+# Commit b75e7e9, 21/10/2026 20:11, TypeDB 3.13.6 via Docker
+$ TYPEDB_TEST_URL=http://127.0.0.1:18000 PYTHONPATH=perception python -m unittest tests.test_integration -v
+test_activity_requirements (tests.test_integration.IntegrationTests.test_activity_requirements) ... ERROR
+test_incompatible_schema_is_preserved (tests.test_integration.IntegrationTests.test_incompatible_schema_is_preserved) ... ERROR
+test_inference_changes_when_facts_change (tests.test_integration.IntegrationTests.test_inference_changes_when_facts_change) ... ERROR
+test_initialization_preserves_existing_examples (tests.test_integration.IntegrationTests.test_initialization_preserves_existing_examples) ... ERROR
+
+======================================================================
+ERROR: test_activity_requirements (tests.test_integration.IntegrationTests.test_activity_requirements)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+FileNotFoundError: [Errno 2] No such file or directory: '<projeto>/perception/schema.tql'
+
+======================================================================
+ERROR: test_incompatible_schema_is_preserved (tests.test_integration.IntegrationTests.test_incompatible_schema_is_preserved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+FileNotFoundError: [Errno 2] No such file or directory: '<projeto>/perception/schema.tql'
+
+======================================================================
+ERROR: test_inference_changes_when_facts_change (tests.test_integration.IntegrationTests.test_inference_changes_when_facts_change)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+FileNotFoundError: [Errno 2] No such file or directory: '<projeto>/perception/schema.tql'
+
+======================================================================
+ERROR: test_initialization_preserves_existing_examples (tests.test_integration.IntegrationTests.test_initialization_preserves_existing_examples)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+FileNotFoundError: [Errno 2] No such file or directory: '<projeto>/perception/schema.tql'
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.306s
+
+FAILED (errors=4)
