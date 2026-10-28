@@ -1,0 +1,159 @@
+{
+  "executado_em": "2026-10-27T03:24:36+00:00",
+  "parametros": {
+    "modelo": "yolo11n.pt",
+    "imagens_avaliadas": 2000,
+    "formato_do_conjunto": "supervisely",
+    "limiar_iou": 0.5,
+    "confianca_operacional": 0.25,
+    "confianca_minima_inferencia": 0.001,
+    "resolucao_inferencia": 640,
+    "classes_avaliadas": [
+      "pessoa",
+      "bicicleta",
+      "carro",
+      "motocicleta",
+      "onibus",
+      "caminhao",
+      "semaforo",
+      "placa_pare"
+    ],
+    "lado_minimo_px": 0.0,
+    "referencias_descartadas_por_tamanho": 0,
+    "predicoes_descartadas_por_tamanho": 0,
+    "rotulos_sem_equivalente": [
+      "caravan",
+      "traffic sign",
+      "trailer",
+      "train"
+    ]
+  },
+  "custo_computacional": {
+    "imagens": 2000,
+    "segundos": 67.39,
+    "imagens_por_segundo": 29.68,
+    "milissegundos_por_imagem": 33.7
+  },
+  "metricas_por_classe": {
+    "pessoa": {
+      "classe": 0,
+      "referencias": 5980,
+      "predicoes": 1310,
+      "verdadeiros_positivos": 993,
+      "falsos_positivos": 317,
+      "falsos_negativos": 4987,
+      "precisao": 0.7580152671755725,
+      "revocacao": 0.1660535117056856,
+      "f1": 0.27242798353909464,
+      "ap": 0.2665780877248614
+    },
+    "bicicleta": {
+      "classe": 1,
+      "referencias": 493,
+      "predicoes": 35,
+      "verdadeiros_positivos": 27,
+      "falsos_positivos": 8,
+      "falsos_negativos": 466,
+      "precisao": 0.7714285714285715,
+      "revocacao": 0.05476673427991886,
+      "f1": 0.10227272727272727,
+      "ap": 0.10714568729015318
+    },
+    "carro": {
+      "classe": 2,
+      "referencias": 40823,
+      "predicoes": 11628,
+      "verdadeiros_positivos": 9617,
+      "falsos_positivos": 2011,
+      "falsos_negativos": 31206,
+      "precisao": 0.8270553835569315,
+      "revocacao": 0.23557798299977953,
+      "f1": 0.3667041619797525,
+      "ap": 0.35299799145808103
+    },
+    "motocicleta": {
+      "classe": 3,
+      "referencias": 178,
+      "predicoes": 22,
+      "verdadeiros_positivos": 14,
+      "falsos_positivos": 8,
+      "falsos_negativos": 164,
+      "precisao": 0.6363636363636364,
+      "revocacao": 0.07865168539325842,
+      "f1": 0.13999999999999999,
+      "ap": 0.122891822759744
+    },
+    "onibus": {
+      "classe": 5,
+      "referencias": 975,
+      "predicoes": 254,
+      "verdadeiros_positivos": 117,
+      "falsos_positivos": 137,
+      "falsos_negativos": 858,
+      "precisao": 0.46062992125984253,
+      "revocacao": 0.12,
+      "f1": 0.1903986981285598,
+      "ap": 0.11507652941335082
+    },
+    "caminhao": {
+      "classe": 7,
+      "referencias": 2373,
+      "predicoes": 821,
+      "verdadeiros_positivos": 264,
+      "falsos_positivos": 557,
+      "falsos_negativos": 2109,
+      "precisao": 0.3215590742996346,
+      "revocacao": 0.11125158027812895,
+      "f1": 0.16530995616781466,
+      "ap": 0.0939410533221214
+    },
+    "semaforo": {
+      "classe": 9,
+      "referencias": 0,
+      "predicoes": 1222,
+      "verdadeiros_positivos": 0,
+      "falsos_positivos": 1222,
+      "falsos_negativos": 0,
+      "precisao": 0.0,
+      "revocacao": 0.0,
+      "f1": 0.0,
+      "ap": 0.0
+    },
+    "placa_pare": {
+      "classe": 11,
+      "referencias": 0,
+      "predicoes": 28,
+      "verdadeiros_positivos": 0,
+      "falsos_positivos": 28,
+      "falsos_negativos": 0,
+      "precisao": 0.0,
+      "revocacao": 0.0,
+      "f1": 0.0,
+      "ap": 0.0
+    }
+  },
+  "map_05": 0.17643852866138532,
+  "map_por_limiar_de_iou": {
+    "0.5": 0.17643852866138532,
+    "0.55": 0.1606510255699108,
+    "0.6": 0.1393871783147397,
+    "0.65": 0.11904142173011721,
+    "0.7": 0.09656525124803743,
+    "0.75": 0.08021903002329304,
+    "0.8": 0.06614083767994992,
+    "0.85": 0.04693606821288925,
+    "0.9": 0.026781542322161286,
+    "0.95": 0.006575999048521845
+  },
+  "map_05_095": 0.09187368828110058,
+  "map_por_condicao": {
+    "porte: pequeno": 0.021983051706954623,
+    "porte: medio": 0.20967650130899498,
+    "porte: grande": 0.37274174415720435
+  },
+  "anotacoes_excluidas_por_ausencia_de_equivalente": {
+    "caravan": 184,
+    "trailer": 34,
+    "train": 47
+  }
+}
