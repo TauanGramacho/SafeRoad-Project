@@ -1,0 +1,304 @@
+# =====================================================================
+# SafeRoad - Base de conhecimento do dominio de transito brasileiro
+# TypeDB 3.x / TypeQL 3
+#
+# Organizacao do arquivo:
+#   1. Atributos
+#   2. Entidades: objetos de cena, infraestrutura, catalogo normativo
+#   3. Relacoes: composicao da cena, papeis dos agentes, manobras
+#   4. Declaracoes de abstracao
+#
+# Referencias de modelagem:
+#   - Buechel et al. (2017): separacao entre representacao da cena e
+#     conhecimento normativo, com conceitos harmonizados aos da norma.
+#   - Hulsen et al. (2011): distincao entre elementos estaticos da via e
+#     agentes dinamicos.
+#   - Singh et al. (2023), dataset ROAD: evento como composicao de agente,
+#     acao e localizacao.
+#
+# Nota sobre o catalogo de infracoes: os dispositivos do CTB sao
+# carregados como DADOS, e nao como tipos. Acrescentar uma nova conduta
+# tipificada nao exige alteracao de esquema (RNF17).
+# =====================================================================
+
+define
+
+# ---------------------------------------------------------------------
+# 1. ATRIBUTOS
+# ---------------------------------------------------------------------
+
+# Identificacao e proveniencia
+attribute identificador, value string;
+attribute identificador_rastreamento, value integer;
+attribute identificador_bloco, value string;
+
+# Confianca herdada da camada de percepcao, no intervalo [0, 1].
+attribute confianca, value double;
+
+# Instantes, em segundos a partir do inicio do bloco de video.
+attribute instante, value double;
+attribute instante_inicial, value double;
+attribute instante_final, value double;
+
+# Estado do semaforo. Valores esperados: "vermelho", "amarelo", "verde".
+attribute estado_semaforo, value string;
+
+# Tipo de marcacao longitudinal da via.
+# Valores esperados: "continua", "tracejada".
+attribute tipo_marcacao, value string;
+
+# Lado de uma manobra ou sinalizacao.
+# Valores esperados: "esquerda", "direita".
+attribute lado, value string;
+
+# Catalogo normativo
+attribute artigo_ctb, value string;
+attribute denominacao_legal, value string;
+attribute gravidade, value string;        # "leve", "media", "grave", "gravissima"
+
+# Ramo da base ao qual a conduta pertence.
+# Valores esperados: "normativo", "risco".
+attribute ramo, value string;
+
+# Natureza da caracterizacao, conforme a confianca das premissas.
+# Valores esperados: "constatado", "indicado".
+attribute natureza_da_caracterizacao, value string;
+
+# Geometria, para as condutas que dependem de medida espacial.
+attribute distancia_longitudinal, value double;
+attribute velocidade_relativa, value double;
+
+
+# ---------------------------------------------------------------------
+# 2. ENTIDADES
+# ---------------------------------------------------------------------
+
+# Raiz de tudo o que a camada de percepcao produz. Todo objeto de cena
+# carrega o identificador atribuido pelo rastreamento e a confianca da
+# deteccao que o originou.
+entity objeto_de_cena,
+    owns identificador_rastreamento,
+    owns confianca,
+    plays composicao_de_cena:elemento_presente;
+
+# ---- agentes dinamicos ----------------------------------------------
+
+entity agente sub objeto_de_cena;
+
+# No CTB, veiculo abrange tambem os de propulsao humana, razao pela qual
+# a bicicleta figura aqui e nao como objeto a parte.
+entity veiculo sub agente,
+    plays conducao:veiculo_conduzido,
+    plays ocupacao_de_faixa:veiculo_ocupante,
+    plays ultrapassagem:ultrapassante,
+    plays ultrapassagem:ultrapassado,
+    plays mudanca_de_faixa:veiculo_em_mudanca,
+    plays transposicao_de_cruzamento:veiculo_transpondo,
+    plays sinalizacao_de_manobra:veiculo_sinalizando,
+    plays seguimento:veiculo_seguidor,
+    plays seguimento:veiculo_seguido;
+
+entity veiculo_automotor sub veiculo;
+
+entity automovel sub veiculo_automotor;
+entity motocicleta sub veiculo_automotor;
+entity onibus sub veiculo_automotor;
+entity caminhao sub veiculo_automotor;
+
+# Veiculo de propulsao humana, nos termos do CTB.
+entity bicicleta sub veiculo;
+
+entity pessoa sub agente,
+    plays conducao:condutor,
+    plays uso_de_equipamento:usuario,
+    plays travessia:pedestre_em_travessia,
+    plays seguimento:veiculo_seguido;
+
+# ---- equipamentos ----------------------------------------------------
+
+entity equipamento sub objeto_de_cena,
+    plays uso_de_equipamento:equipamento_utilizado;
+
+entity capacete sub equipamento;
+
+# ---- elementos estaticos da via --------------------------------------
+
+entity elemento_de_via sub objeto_de_cena;
+
+entity faixa_de_transito sub elemento_de_via,
+    plays ocupacao_de_faixa:faixa_ocupada,
+    plays delimitacao:faixa_delimitada,
+    plays regencia_semaforica:faixa_regida,
+    plays mudanca_de_faixa:faixa_de_origem,
+    plays mudanca_de_faixa:faixa_de_destino,
+    plays ultrapassagem:faixa_utilizada,
+    plays transposicao_de_cruzamento:faixa_cruzada;
+
+# Linha divisoria entre faixas. O tipo determina se a transposicao e
+# permitida, razao pela qual e modelada como entidade e nao como
+# atributo da faixa.
+entity marcacao_longitudinal sub elemento_de_via,
+    owns tipo_marcacao,
+    plays delimitacao:marcacao_delimitante,
+    plays mudanca_de_faixa:marcacao_transposta;
+
+entity semaforo sub elemento_de_via,
+    owns estado_semaforo,
+    plays regencia_semaforica:semaforo_regente,
+    plays transposicao_de_cruzamento:semaforo_observado;
+
+entity faixa_de_pedestres sub elemento_de_via,
+    plays travessia:faixa_utilizada_na_travessia;
+
+# ---- cena -------------------------------------------------------------
+
+# Recorte temporal sobre o qual o raciocinio opera, correspondente a um
+# bloco de video processado.
+entity cena,
+    owns identificador,
+    owns identificador_bloco,
+    owns instante_inicial,
+    owns instante_final,
+    plays composicao_de_cena:cena_de_referencia;
+
+# ---- catalogo normativo ----------------------------------------------
+
+# Conduta tipificada. As instancias sao carregadas como dados, de modo
+# que o acrescimo de novas condutas nao altere o esquema.
+entity conduta_tipificada,
+    owns identificador,
+    owns denominacao_legal,
+    owns artigo_ctb,
+    owns gravidade,
+    owns ramo,
+    plays caracterizacao:conduta_reconhecida;
+
+
+# ---------------------------------------------------------------------
+# 3. RELACOES
+# ---------------------------------------------------------------------
+
+# Vincula os objetos percebidos ao recorte temporal em que aparecem.
+# Manobras tambem integram a cena, o que e possivel porque no TypeDB uma
+# relacao pode desempenhar papel em outra relacao.
+relation composicao_de_cena,
+    relates cena_de_referencia,
+    relates elemento_presente;
+
+# ---- papeis dos agentes ----------------------------------------------
+
+# O motociclista e o ciclista nao sao tipos a parte: derivam de uma
+# pessoa que conduz determinado veiculo, o que evita duplicar hierarquia
+# e permite que a categoria seja inferida.
+relation conducao,
+    relates condutor,
+    relates veiculo_conduzido,
+    owns confianca,
+    plays composicao_de_cena:elemento_presente;
+
+relation uso_de_equipamento,
+    relates usuario,
+    relates equipamento_utilizado,
+    owns confianca,
+    plays composicao_de_cena:elemento_presente;
+
+# ---- topologia da via -------------------------------------------------
+
+relation delimitacao,
+    relates faixa_delimitada,
+    relates marcacao_delimitante,
+    owns lado;
+
+relation regencia_semaforica,
+    relates semaforo_regente,
+    relates faixa_regida;
+
+relation ocupacao_de_faixa,
+    relates veiculo_ocupante,
+    relates faixa_ocupada,
+    owns instante,
+    owns confianca,
+    plays composicao_de_cena:elemento_presente;
+
+# ---- manobras ---------------------------------------------------------
+
+# Raiz das acoes executadas por um agente ao longo de um intervalo. Os
+# subtipos especializam o papel do executor e acrescentam os demais
+# participantes.
+relation manobra,
+    relates executor,
+    owns instante_inicial,
+    owns instante_final,
+    owns confianca,
+    plays composicao_de_cena:elemento_presente,
+    plays caracterizacao:manobra_caracterizada;
+
+# Deslocamento simples, sem troca de faixa.
+relation deslocamento sub manobra,
+    relates veiculo_em_deslocamento as executor;
+
+# Relacao quaternaria: alem do veiculo, registra a faixa de origem, a de
+# destino e a marcacao transposta, sem a qual nao se distingue a mudanca
+# regular daquela que cruza linha continua.
+relation mudanca_de_faixa sub manobra,
+    relates veiculo_em_mudanca as executor,
+    relates faixa_de_origem,
+    relates faixa_de_destino,
+    relates marcacao_transposta,
+    owns lado;
+
+# Relacao ternaria: a ultrapassagem nao se reduz a um par de veiculos,
+# pois depende tambem da faixa pela qual foi realizada.
+relation ultrapassagem sub manobra,
+    relates ultrapassante as executor,
+    relates ultrapassado,
+    relates faixa_utilizada,
+    owns lado;
+
+relation transposicao_de_cruzamento sub manobra,
+    relates veiculo_transpondo as executor,
+    relates semaforo_observado,
+    relates faixa_cruzada;
+
+relation sinalizacao_de_manobra sub manobra,
+    relates veiculo_sinalizando as executor,
+    owns lado;
+
+relation travessia sub manobra,
+    relates pedestre_em_travessia as executor,
+    relates faixa_utilizada_na_travessia;
+
+# Seguimento de um agente por um veiculo, base das condutas que dependem
+# de distancia. O segundo participante pode ser pessoa, o que cobre a
+# aproximacao de pedestre e ciclista.
+relation seguimento sub manobra,
+    relates veiculo_seguidor as executor,
+    relates veiculo_seguido,
+    owns distancia_longitudinal,
+    owns velocidade_relativa;
+
+# ---- caracterizacao ---------------------------------------------------
+
+# Vincula uma manobra observada a conduta tipificada que ela configura.
+# E produzida a partir das funcoes de inferencia e registrada apenas
+# quando se deseja persistir o resultado.
+relation caracterizacao,
+    relates manobra_caracterizada,
+    relates conduta_reconhecida,
+    owns confianca,
+    owns natureza_da_caracterizacao;
+
+
+# ---------------------------------------------------------------------
+# 4. DECLARACOES DE ABSTRACAO
+# ---------------------------------------------------------------------
+# Declaradas em instrucoes proprias por ser a forma documentada na
+# referencia do TypeQL 3.
+
+objeto_de_cena @abstract;
+agente @abstract;
+veiculo @abstract;
+veiculo_automotor @abstract;
+equipamento @abstract;
+elemento_de_via @abstract;
+manobra @abstract;

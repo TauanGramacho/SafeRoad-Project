@@ -1,0 +1,81 @@
+# =====================================================================
+# SafeRoad - Catalogo de condutas tipificadas
+#
+# As condutas sao carregadas como DADOS, e nao como tipos do esquema:
+# acrescentar uma nova conduta nao exige alteracao estrutural (RNF17).
+#
+# ATENCAO: os dispositivos legais abaixo devem ser conferidos contra o
+# texto vigente do CTB antes de serem citados no trabalho. O enquadramento
+# de uma conduta depende de circunstancias que a camera nem sempre
+# observa, e mais de um artigo pode incidir sobre a mesma manobra.
+#
+# Carregar apos o schema.tql.
+# =====================================================================
+
+insert
+
+$avanco isa conduta_tipificada,
+    has identificador "avanco_sinal_vermelho",
+    has denominacao_legal "Avancar o sinal vermelho do semaforo",
+    has artigo_ctb "Art. 208",
+    has gravidade "gravissima",
+    has ramo "normativo";
+
+$continua isa conduta_tipificada,
+    has identificador "transposicao_linha_continua",
+    has denominacao_legal "Ultrapassar pela contramao em trecho com marcacao continua",
+    has artigo_ctb "Art. 203",
+    has gravidade "gravissima",
+    has ramo "normativo";
+
+$sem_seta isa conduta_tipificada,
+    has identificador "mudanca_sem_sinalizacao",
+    has denominacao_legal "Deixar de indicar com antecedencia a mudanca de faixa",
+    has artigo_ctb "Art. 196",
+    has gravidade "grave",
+    has ramo "normativo";
+
+$pela_direita isa conduta_tipificada,
+    has identificador "ultrapassagem_pela_direita",
+    has denominacao_legal "Ultrapassar pela direita",
+    has artigo_ctb "Art. 199",
+    has gravidade "media",
+    has ramo "normativo";
+
+$sem_capacete isa conduta_tipificada,
+    has identificador "conducao_sem_capacete",
+    has denominacao_legal "Conduzir motocicleta sem capacete de seguranca",
+    has artigo_ctb "Art. 244",
+    has gravidade "gravissima",
+    has ramo "normativo";
+
+$distancia isa conduta_tipificada,
+    has identificador "distancia_de_seguimento",
+    has denominacao_legal "Deixar de guardar distancia de seguranca frontal",
+    has artigo_ctb "Art. 192",
+    has gravidade "grave",
+    has ramo "normativo";
+
+$preferencia isa conduta_tipificada,
+    has identificador "preferencia_pedestre",
+    has denominacao_legal "Deixar de dar preferencia de passagem a pedestre",
+    has artigo_ctb "Art. 214",
+    has gravidade "gravissima",
+    has ramo "normativo";
+
+# ---- ramo de risco ---------------------------------------------------
+# Condutas que nao constituem infracao, mas que o sistema caracteriza
+# como situacao de risco. A presenca deste ramo no catalogo materializa
+# a separacao entre o normativo e o fisico.
+
+$aproximacao isa conduta_tipificada,
+    has identificador "aproximacao_critica",
+    has denominacao_legal "Aproximacao com tempo ate a colisao abaixo do limiar",
+    has gravidade "grave",
+    has ramo "risco";
+
+$ultrapassagem_estreita isa conduta_tipificada,
+    has identificador "ultrapassagem_com_folga_reduzida",
+    has denominacao_legal "Ultrapassagem concluida com folga lateral reduzida",
+    has gravidade "grave",
+    has ramo "risco";

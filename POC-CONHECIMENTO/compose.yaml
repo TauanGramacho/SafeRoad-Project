@@ -1,0 +1,17 @@
+services:
+  typedb:
+    # Para fixar a versao no texto do trabalho, substitua "latest" pela
+    # versao efetivamente utilizada, por exemplo typedb/typedb:3.14.0.
+    image: typedb/typedb:latest
+    container_name: saferoad-typedb
+    ports:
+      - "1729:1729"   # driver
+      - "8000:8000"   # interface HTTP
+    volumes:
+      # Caminho dos dados a partir da versao 3.8. Em 3.7.0 e anteriores o
+      # caminho e /opt/typedb-server-linux-x86_64/server/data.
+      - typedb-data:/var/lib/typedb/data
+    restart: unless-stopped
+
+volumes:
+  typedb-data:
