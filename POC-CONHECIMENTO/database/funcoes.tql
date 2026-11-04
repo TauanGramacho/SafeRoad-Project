@@ -1,0 +1,147 @@
+
+# =====================================================================
+# SafeRoad - Funcoes de inferencia
+# TypeDB 3.x / TypeQL 3
+#
+# Na versao 3 do TypeDB as regras foram substituidas por funcoes, que
+# separam explicitamente o raciocinio do modelo de dados: cada conclusao
+# corresponde a uma funcao nomeada e invocada de forma explicita, o que
+# torna rastreavel o caminho entre os fatos observados e a conduta
+# caracterizada.
+#
+# Convencoes de sintaxe adotadas:
+#   - chamada de funcao que devolve fluxo:  let $x in funcao();
+#   - casamento de relacao:  $r isa tipo, links (papel: $x, ...);
+#
+# Carregar apos o schema.tql.
+# =====================================================================
+
+define
+
+# ---------------------------------------------------------------------
+# A. CATEGORIAS DERIVADAS DE AGENTE
+# ---------------------------------------------------------------------
+# Demonstram que categorias correntes do dominio nao precisam ser
+# declaradas como tipos: derivam da relacao entre a pessoa e o veiculo
+# que ela conduz.
+
+fun motociclistas() -> { pessoa }:
+match
+    $pessoa isa pessoa;
+    $moto isa motocicleta;
+    $conducao isa conducao,
+        links (condutor: $pessoa, veiculo_conduzido: $moto);
+return { $pessoa };
+
+
+fun ciclistas() -> { pessoa }:
+match
+    $pessoa isa pessoa;
+    $bicicleta isa bicicleta;
+    $conducao isa conducao,
+        links (condutor: $pessoa, veiculo_conduzido: $bicicleta);
+return { $pessoa };
+
+
+fun condutores_sem_capacete() -> { pessoa }:
+match
+    let $pessoa in motociclistas();
+    not {
+        $capacete isa capacete;
+        $uso isa uso_de_equipamento,
+            links (usuario: $pessoa, equipamento_utilizado: $capacete);
+    };
+return { $pessoa };
+
+
+# ---------------------------------------------------------------------
+# B. CARACTERIZACAO NORMATIVA
+# ---------------------------------------------------------------------
+# Cada funcao devolve as manobras que configuram determinada conduta
+# tipificada. O dispositivo legal correspondente e obtido no catalogo,
+# carregado como dado.
+
+# Transposicao de cruzamento com o semaforo que o rege em vermelho.
+fun avancos_de_sinal_vermelho() -> { transposicao_de_cruzamento }:
+match
+    $manobra isa transposicao_de_cruzamento,
+        links (veiculo_transpondo: $veiculo, semaforo_observado: $semaforo);
+    $semaforo has estado_semaforo "vermelho";
+return { $manobra };
+
+
+# Mudanca de faixa que transpoe marcacao longitudinal continua.
+fun mudancas_sobre_linha_continua() -> { mudanca_de_faixa }:
+match
+    $manobra isa mudanca_de_faixa,
+        links (veiculo_em_mudanca: $veiculo, marcacao_transposta: $marcacao);
+    $marcacao has tipo_marcacao "continua";
+return { $manobra };
+
+
+# Mudanca de faixa sem sinalizacao previa para o mesmo lado da manobra.
+# A conclusao so e legitima porque o raciocinio opera sobre um recorte
+# temporal integralmente observado, conforme a hipotese de mundo fechado
+# discutida na fundamentacao: a ausencia de registro de sinalizacao e
+# tomada como ausencia de sinalizacao.
+fun mudancas_sem_sinalizacao() -> { mudanca_de_faixa }:
+match
+    $manobra isa mudanca_de_faixa,
+        links (veiculo_em_mudanca: $veiculo);
+    $manobra has lado $lado;
+    $manobra has instante_inicial $inicio;
+    not {
+        $sinal isa sinalizacao_de_manobra,
+            links (veiculo_sinalizando: $veiculo);
+        $sinal has lado $lado;
+        $sinal has instante_inicial $inicio_sinal;
+        $inicio_sinal <= $inicio;
+    };
+return { $manobra };
+
+
+# Ultrapassagem realizada pela direita. Pelo CTB a ultrapassagem deve
+# ser feita pela esquerda, de modo que e a realizada pela direita, e nao
+# a pela esquerda, que configura infracao.
+fun ultrapassagens_pela_direita() -> { ultrapassagem }:
+match
+    $manobra isa ultrapassagem,
+        links (ultrapassante: $ultrapassante, ultrapassado: $ultrapassado);
+    $manobra has lado "direita";
+return { $manobra };
+
+
+# Ultrapassagem cuja faixa utilizada e separada por marcacao continua.
+fun ultrapassagens_sobre_linha_continua() -> { ultrapassagem }:
+match
+    $manobra isa ultrapassagem,
+        links (ultrapassante: $veiculo, faixa_utilizada: $faixa);
+    $delimitacao isa delimitacao,
+        links (faixa_delimitada: $faixa, marcacao_delimitante: $marcacao);
+    $marcacao has tipo_marcacao "continua";
+return { $manobra };
+
+
+# ---------------------------------------------------------------------
+# C. CONSULTAS ESTRUTURAIS
+# ---------------------------------------------------------------------
+# Verificam a representacao de hierarquias e de relacoes n-arias.
+
+# Participantes de uma ultrapassagem: quem ultrapassou, quem foi
+# ultrapassado e em que faixa, devolvidos em uma unica tupla.
+fun participantes_da_ultrapassagem($manobra: ultrapassagem)
+        -> { veiculo, veiculo, faixa_de_transito }:
+match
+    $manobra links (ultrapassante: $ultrapassante,
+                    ultrapassado: $ultrapassado,
+                    faixa_utilizada: $faixa);
+return { $ultrapassante, $ultrapassado, $faixa };
+
+
+# Manobras executadas por um agente, qualquer que seja seu subtipo. A
+# consulta alcanca todas as especializacoes porque o papel de executor e
+# declarado no tipo abstrato.
+fun manobras_do_agente($agente: agente) -> { manobra }:
+match
+    $manobra isa manobra, links (executor: $agente);
+return { $manobra };

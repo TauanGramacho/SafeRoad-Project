@@ -1,3 +1,0 @@
-match
-  let $p, $v in motoristas();
-fetch { "motorista": $p.nome, "veiculo": $v.modelo };

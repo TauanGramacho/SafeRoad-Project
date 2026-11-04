@@ -1,3 +1,0 @@
-match
-  $tipo sub! veiculo;
-fetch { "tipo": label($tipo) };
