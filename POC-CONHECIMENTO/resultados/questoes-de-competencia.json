@@ -1,0 +1,229 @@
+{
+  "executado_em": "2026-11-04T04:21:21+00:00",
+  "total": 13,
+  "atendidas": 13,
+  "questoes": [
+    {
+      "codigo": "QC01",
+      "capacidade": "Hierarquia de tipos",
+      "enunciado": "Uma consulta pelo tipo geral veiculo alcanca todas as suas especializacoes sem enumera-las?",
+      "consulta": "match $v isa veiculo, has identificador $id; $id like \"c12_.*\"; select $id;",
+      "esperado": [
+        "c12_automovel",
+        "c12_bicicleta",
+        "c12_caminhao",
+        "c12_motocicleta",
+        "c12_onibus"
+      ],
+      "proibido": [],
+      "obtido": [
+        "c12_automovel",
+        "c12_bicicleta",
+        "c12_caminhao",
+        "c12_motocicleta",
+        "c12_onibus"
+      ],
+      "situacao": "atendida",
+      "detalhe": ""
+    },
+    {
+      "codigo": "QC02",
+      "capacidade": "Hierarquia de tipos",
+      "enunciado": "A bicicleta figura como veiculo, conforme o CTB, e nao como objeto a parte?",
+      "consulta": "match $v isa veiculo, has identificador $id; $id == \"c12_bicicleta\"; select $id;",
+      "esperado": [
+        "c12_bicicleta"
+      ],
+      "proibido": [],
+      "obtido": [
+        "c12_bicicleta"
+      ],
+      "situacao": "atendida",
+      "detalhe": ""
+    },
+    {
+      "codigo": "QC03",
+      "capacidade": "Categoria derivada",
+      "enunciado": "A categoria de motociclista e derivada da conducao de uma motocicleta, sem ser declarada como tipo?",
+      "consulta": "match let $p in motociclistas(); $p has identificador $id; select $id;",
+      "esperado": [
+        "c09_condutor",
+        "c10_condutor"
+      ],
+      "proibido": [
+        "c11_condutor"
+      ],
+      "obtido": [
+        "c09_condutor",
+        "c10_condutor"
+      ],
+      "situacao": "atendida",
+      "detalhe": ""
+    },
+    {
+      "codigo": "QC04",
+      "capacidade": "Categoria derivada",
+      "enunciado": "A pessoa que conduz bicicleta e reconhecida como ciclista e nao como motociclista?",
+      "consulta": "match let $p in ciclistas(); $p has identificador $id; select $id;",
+      "esperado": [
+        "c11_condutor"
+      ],
+      "proibido": [],
+      "obtido": [
+        "c11_condutor"
+      ],
+      "situacao": "atendida",
+      "detalhe": ""
+    },
+    {
+      "codigo": "QC05",
+      "capacidade": "Relacao n-aria",
+      "enunciado": "Dada uma ultrapassagem, a base devolve os tres participantes com seus papeis distintos?",
+      "consulta": "match $m isa ultrapassagem, has identificador \"m07_ultrapassagem_direita\"; $m links (ultrapassante: $a, ultrapassado: $b, faixa_utilizada: $f); $a has identificador $id; select $id;",
+      "esperado": [
+        "c07_ultrapassante"
+      ],
+      "proibido": [],
+      "obtido": [
+        "c07_ultrapassante"
+      ],
+      "situacao": "atendida",
+      "detalhe": ""
+    },
+    {
+      "codigo": "QC06",
+      "capacidade": "Relacao n-aria",
+      "enunciado": "A mudanca de faixa registra as faixas de origem e destino e a marcacao transposta em uma unica relacao?",
+      "consulta": "match $m isa mudanca_de_faixa, has identificador \"m03_mudanca_continua\"; $m links (faixa_de_origem: $o, faixa_de_destino: $d, marcacao_transposta: $mar); $mar has identificador $id; select $id;",
+      "esperado": [
+        "c03_marcacao"
+      ],
+      "proibido": [],
+      "obtido": [
+        "c03_marcacao"
+      ],
+      "situacao": "atendida",
+      "detalhe": ""
+    },
+    {
+      "codigo": "QC07",
+      "capacidade": "Relacao n-aria",
+      "enunciado": "Uma consulta pelo papel de executor alcanca manobras de subtipos distintos?",
+      "consulta": "match $m isa manobra, links (executor: $v); $v has identificador \"c03_carro\"; $m has identificador $id; select $id;",
+      "esperado": [
+        "m03_mudanca_continua"
+      ],
+      "proibido": [],
+      "obtido": [
+        "m03_mudanca_continua"
+      ],
+      "situacao": "atendida",
+      "detalhe": ""
+    },
+    {
+      "codigo": "QC08",
+      "capacidade": "Caracterizacao normativa",
+      "enunciado": "A transposicao de cruzamento com semaforo vermelho e caracterizada, e a com semaforo verde nao?",
+      "consulta": "match let $m in avancos_de_sinal_vermelho(); $m has identificador $id; select $id;",
+      "esperado": [
+        "m01_avanco_vermelho"
+      ],
+      "proibido": [
+        "m02_transposicao_verde"
+      ],
+      "obtido": [
+        "m01_avanco_vermelho"
+      ],
+      "situacao": "atendida",
+      "detalhe": ""
+    },
+    {
+      "codigo": "QC09",
+      "capacidade": "Caracterizacao normativa",
+      "enunciado": "A mudanca de faixa sobre marcacao continua e caracterizada, e a sobre marcacao tracejada nao?",
+      "consulta": "match let $m in mudancas_sobre_linha_continua(); $m has identificador $id; select $id;",
+      "esperado": [
+        "m03_mudanca_continua"
+      ],
+      "proibido": [
+        "m04_mudanca_tracejada"
+      ],
+      "obtido": [
+        "m03_mudanca_continua"
+      ],
+      "situacao": "atendida",
+      "detalhe": ""
+    },
+    {
+      "codigo": "QC10",
+      "capacidade": "Caracterizacao normativa",
+      "enunciado": "A mudanca de faixa sem sinalizacao previa e caracterizada, e a precedida de sinalizacao para o mesmo lado nao?",
+      "consulta": "match let $m in mudancas_sem_sinalizacao(); $m has identificador $id; select $id;",
+      "esperado": [
+        "m03_mudanca_continua",
+        "m05_mudanca_sem_seta"
+      ],
+      "proibido": [
+        "m04_mudanca_tracejada",
+        "m06_mudanca_com_seta"
+      ],
+      "obtido": [
+        "m03_mudanca_continua",
+        "m05_mudanca_sem_seta"
+      ],
+      "situacao": "atendida",
+      "detalhe": ""
+    },
+    {
+      "codigo": "QC11",
+      "capacidade": "Caracterizacao normativa",
+      "enunciado": "A ultrapassagem pela direita e caracterizada, e a pela esquerda, que o CTB prescreve, nao?",
+      "consulta": "match let $m in ultrapassagens_pela_direita(); $m has identificador $id; select $id;",
+      "esperado": [
+        "m07_ultrapassagem_direita"
+      ],
+      "proibido": [
+        "m08_ultrapassagem_esquerda"
+      ],
+      "obtido": [
+        "m07_ultrapassagem_direita"
+      ],
+      "situacao": "atendida",
+      "detalhe": ""
+    },
+    {
+      "codigo": "QC12",
+      "capacidade": "Caracterizacao normativa",
+      "enunciado": "O condutor de motocicleta sem capacete e caracterizado, e o que porta capacete nao?",
+      "consulta": "match let $p in condutores_sem_capacete(); $p has identificador $id; select $id;",
+      "esperado": [
+        "c09_condutor"
+      ],
+      "proibido": [
+        "c10_condutor"
+      ],
+      "obtido": [
+        "c09_condutor"
+      ],
+      "situacao": "atendida",
+      "detalhe": ""
+    },
+    {
+      "codigo": "QC13",
+      "capacidade": "Catalogo normativo",
+      "enunciado": "O catalogo distingue as condutas do ramo normativo das do ramo de risco?",
+      "consulta": "match $c isa conduta_tipificada, has ramo \"risco\", has identificador $id; select $id;",
+      "esperado": [
+        "aproximacao_critica",
+        "ultrapassagem_com_folga_reduzida"
+      ],
+      "proibido": [],
+      "obtido": [
+        "aproximacao_critica",
+        "ultrapassagem_com_folga_reduzida"
+      ],
+      "situacao": "atendida",
+      "detalhe": ""
+    }
+  ]
+}

@@ -24,13 +24,14 @@ ENDERECO_PADRAO = "localhost:1729"
 USUARIO_PADRAO = "admin"
 SENHA_PADRAO = "password"
 BANCO_PADRAO = "saferoad"
-BASE = "database/"
+BASE= "database/"
 
 # Ordem de carga: o esquema precede as funcoes, que precedem os dados.
 ARQUIVOS = [
     (BASE+"schema.tql", "schema", "esquema"),
     (BASE+"funcoes.tql", "schema", "funcoes de inferencia"),
     (BASE+"catalogo.tql", "write", "catalogo de condutas"),
+    ("cenas.tql", "write", "cenas sinteticas"),
 ]
 
 
@@ -281,8 +282,7 @@ def main(argv: list[str] | None = None) -> int:
             verificar(td, driver, args.banco)
 
         print(f"\nBase '{args.banco}' pronta em {args.endereco}.")
-        print("Proximo passo: carregar as cenas e executar as consultas de")
-        print("competencia.")
+        print("Proximo passo: python verificar.py")
 
     except ErroSetup as erro:
         print(f"\nErro: {erro}", file=sys.stderr)

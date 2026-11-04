@@ -1,0 +1,375 @@
+# =====================================================================
+# SafeRoad - Cenas sinteticas para verificacao das questoes de competencia
+#
+# Cada cena reproduz os fatos que a camada de percepcao produziria para
+# um recorte de video: as entidades presentes, seus atributos e as
+# relacoes entre elas. Os fatos sao inseridos manualmente para que a
+# avaliacao da camada de raciocinio nao dependa do desempenho da camada
+# anterior.
+#
+# As cenas sao organizadas em pares. A cena de numero impar reproduz a
+# situacao que deve caracterizar a conduta; a de numero par reproduz a
+# situacao semelhante que NAO deve caracteriza-la. O par negativo e o que
+# distingue uma base que raciocina de uma que apenas devolve o que foi
+# inserido.
+#
+# Carregar apos o schema.tql, funcoes.tql e catalogo.tql.
+# =====================================================================
+
+insert
+
+# ---------------------------------------------------------------------
+# CENA 01 - avanco de sinal vermelho (POSITIVO)
+# ---------------------------------------------------------------------
+$c01 isa cena, has identificador "cena_01",
+    has identificador_bloco "bloco_a",
+    has instante_inicial 0.0, has instante_final 20.0;
+
+$c01_carro isa automovel, has identificador "c01_carro",
+    has identificador_rastreamento 101, has confianca 0.93;
+$c01_semaforo isa semaforo, has identificador "c01_semaforo",
+    has identificador_rastreamento 102, has confianca 0.88,
+    has estado_semaforo "vermelho";
+$c01_faixa isa faixa_de_transito, has identificador "c01_faixa",
+    has identificador_rastreamento 103, has confianca 0.80;
+
+$c01_reg isa regencia_semaforica,
+    links (semaforo_regente: $c01_semaforo, faixa_regida: $c01_faixa);
+
+$c01_manobra isa transposicao_de_cruzamento,
+    links (veiculo_transpondo: $c01_carro,
+           semaforo_observado: $c01_semaforo,
+           faixa_cruzada: $c01_faixa),
+    has identificador "m01_avanco_vermelho",
+    has instante_inicial 8.0, has instante_final 9.5, has confianca 0.90;
+
+$c01_comp1 isa composicao_de_cena,
+    links (cena_de_referencia: $c01, elemento_presente: $c01_carro);
+$c01_comp2 isa composicao_de_cena,
+    links (cena_de_referencia: $c01, elemento_presente: $c01_manobra);
+
+
+# ---------------------------------------------------------------------
+# CENA 02 - transposicao com sinal verde (NEGATIVO)
+# ---------------------------------------------------------------------
+$c02 isa cena, has identificador "cena_02",
+    has identificador_bloco "bloco_a",
+    has instante_inicial 20.0, has instante_final 40.0;
+
+$c02_carro isa automovel, has identificador "c02_carro",
+    has identificador_rastreamento 201, has confianca 0.91;
+$c02_semaforo isa semaforo, has identificador "c02_semaforo",
+    has identificador_rastreamento 202, has confianca 0.86,
+    has estado_semaforo "verde";
+$c02_faixa isa faixa_de_transito, has identificador "c02_faixa",
+    has identificador_rastreamento 203, has confianca 0.78;
+
+$c02_reg isa regencia_semaforica,
+    links (semaforo_regente: $c02_semaforo, faixa_regida: $c02_faixa);
+
+$c02_manobra isa transposicao_de_cruzamento,
+    links (veiculo_transpondo: $c02_carro,
+           semaforo_observado: $c02_semaforo,
+           faixa_cruzada: $c02_faixa),
+    has identificador "m02_transposicao_verde",
+    has instante_inicial 28.0, has instante_final 29.4, has confianca 0.89;
+
+$c02_comp isa composicao_de_cena,
+    links (cena_de_referencia: $c02, elemento_presente: $c02_manobra);
+
+
+# ---------------------------------------------------------------------
+# CENA 03 - mudanca de faixa sobre linha continua (POSITIVO)
+# ---------------------------------------------------------------------
+$c03 isa cena, has identificador "cena_03",
+    has identificador_bloco "bloco_b",
+    has instante_inicial 0.0, has instante_final 20.0;
+
+$c03_carro isa automovel, has identificador "c03_carro",
+    has identificador_rastreamento 301, has confianca 0.94;
+$c03_origem isa faixa_de_transito, has identificador "c03_faixa_origem",
+    has identificador_rastreamento 302, has confianca 0.82;
+$c03_destino isa faixa_de_transito, has identificador "c03_faixa_destino",
+    has identificador_rastreamento 303, has confianca 0.81;
+$c03_marcacao isa marcacao_longitudinal, has identificador "c03_marcacao",
+    has identificador_rastreamento 304, has confianca 0.75,
+    has tipo_marcacao "continua";
+
+$c03_delim isa delimitacao,
+    links (faixa_delimitada: $c03_origem,
+           marcacao_delimitante: $c03_marcacao),
+    has lado "esquerda";
+
+$c03_manobra isa mudanca_de_faixa,
+    links (veiculo_em_mudanca: $c03_carro,
+           faixa_de_origem: $c03_origem,
+           faixa_de_destino: $c03_destino,
+           marcacao_transposta: $c03_marcacao),
+    has identificador "m03_mudanca_continua",
+    has lado "esquerda",
+    has instante_inicial 6.0, has instante_final 8.2, has confianca 0.87;
+
+$c03_comp isa composicao_de_cena,
+    links (cena_de_referencia: $c03, elemento_presente: $c03_manobra);
+
+
+# ---------------------------------------------------------------------
+# CENA 04 - mudanca de faixa sobre linha tracejada (NEGATIVO)
+# ---------------------------------------------------------------------
+$c04 isa cena, has identificador "cena_04",
+    has identificador_bloco "bloco_b",
+    has instante_inicial 20.0, has instante_final 40.0;
+
+$c04_carro isa automovel, has identificador "c04_carro",
+    has identificador_rastreamento 401, has confianca 0.92;
+$c04_origem isa faixa_de_transito, has identificador "c04_faixa_origem",
+    has identificador_rastreamento 402, has confianca 0.83;
+$c04_destino isa faixa_de_transito, has identificador "c04_faixa_destino",
+    has identificador_rastreamento 403, has confianca 0.84;
+$c04_marcacao isa marcacao_longitudinal, has identificador "c04_marcacao",
+    has identificador_rastreamento 404, has confianca 0.77,
+    has tipo_marcacao "tracejada";
+
+$c04_delim isa delimitacao,
+    links (faixa_delimitada: $c04_origem,
+           marcacao_delimitante: $c04_marcacao),
+    has lado "esquerda";
+
+$c04_manobra isa mudanca_de_faixa,
+    links (veiculo_em_mudanca: $c04_carro,
+           faixa_de_origem: $c04_origem,
+           faixa_de_destino: $c04_destino,
+           marcacao_transposta: $c04_marcacao),
+    has identificador "m04_mudanca_tracejada",
+    has lado "esquerda",
+    has instante_inicial 25.0, has instante_final 27.1, has confianca 0.88;
+
+# Esta manobra e sinalizada, de modo que tampouco configura a conduta do
+# art. 196. Serve a dois pares negativos ao mesmo tempo.
+$c04_sinal isa sinalizacao_de_manobra,
+    links (veiculo_sinalizando: $c04_carro),
+    has identificador "s04_seta_esquerda",
+    has lado "esquerda",
+    has instante_inicial 23.0, has instante_final 27.1, has confianca 0.71;
+
+$c04_comp isa composicao_de_cena,
+    links (cena_de_referencia: $c04, elemento_presente: $c04_manobra);
+
+
+# ---------------------------------------------------------------------
+# CENA 05 - mudanca de faixa sem sinalizacao previa (POSITIVO)
+# ---------------------------------------------------------------------
+$c05 isa cena, has identificador "cena_05",
+    has identificador_bloco "bloco_c",
+    has instante_inicial 0.0, has instante_final 20.0;
+
+$c05_carro isa automovel, has identificador "c05_carro",
+    has identificador_rastreamento 501, has confianca 0.90;
+$c05_origem isa faixa_de_transito, has identificador "c05_faixa_origem",
+    has identificador_rastreamento 502, has confianca 0.80;
+$c05_destino isa faixa_de_transito, has identificador "c05_faixa_destino",
+    has identificador_rastreamento 503, has confianca 0.79;
+$c05_marcacao isa marcacao_longitudinal, has identificador "c05_marcacao",
+    has identificador_rastreamento 504, has confianca 0.74,
+    has tipo_marcacao "tracejada";
+
+# Nenhuma sinalizacao_de_manobra e inserida para este veiculo. A ausencia
+# de registro e tomada como ausencia do fato, conforme a hipotese de
+# mundo fechado.
+$c05_manobra isa mudanca_de_faixa,
+    links (veiculo_em_mudanca: $c05_carro,
+           faixa_de_origem: $c05_origem,
+           faixa_de_destino: $c05_destino,
+           marcacao_transposta: $c05_marcacao),
+    has identificador "m05_mudanca_sem_seta",
+    has lado "direita",
+    has instante_inicial 11.0, has instante_final 13.4, has confianca 0.86;
+
+$c05_comp isa composicao_de_cena,
+    links (cena_de_referencia: $c05, elemento_presente: $c05_manobra);
+
+
+# ---------------------------------------------------------------------
+# CENA 06 - mudanca de faixa com sinalizacao previa (NEGATIVO)
+# ---------------------------------------------------------------------
+$c06 isa cena, has identificador "cena_06",
+    has identificador_bloco "bloco_c",
+    has instante_inicial 20.0, has instante_final 40.0;
+
+$c06_carro isa automovel, has identificador "c06_carro",
+    has identificador_rastreamento 601, has confianca 0.93;
+$c06_origem isa faixa_de_transito, has identificador "c06_faixa_origem",
+    has identificador_rastreamento 602, has confianca 0.81;
+$c06_destino isa faixa_de_transito, has identificador "c06_faixa_destino",
+    has identificador_rastreamento 603, has confianca 0.82;
+$c06_marcacao isa marcacao_longitudinal, has identificador "c06_marcacao",
+    has identificador_rastreamento 604, has confianca 0.76,
+    has tipo_marcacao "tracejada";
+
+# A seta e acionada antes do inicio da manobra e para o mesmo lado.
+$c06_sinal isa sinalizacao_de_manobra,
+    links (veiculo_sinalizando: $c06_carro),
+    has identificador "s06_seta_direita",
+    has lado "direita",
+    has instante_inicial 29.0, has instante_final 33.5, has confianca 0.69;
+
+$c06_manobra isa mudanca_de_faixa,
+    links (veiculo_em_mudanca: $c06_carro,
+           faixa_de_origem: $c06_origem,
+           faixa_de_destino: $c06_destino,
+           marcacao_transposta: $c06_marcacao),
+    has identificador "m06_mudanca_com_seta",
+    has lado "direita",
+    has instante_inicial 31.0, has instante_final 33.5, has confianca 0.85;
+
+$c06_comp isa composicao_de_cena,
+    links (cena_de_referencia: $c06, elemento_presente: $c06_manobra);
+
+
+# ---------------------------------------------------------------------
+# CENA 07 - ultrapassagem pela direita (POSITIVO)
+# ---------------------------------------------------------------------
+$c07 isa cena, has identificador "cena_07",
+    has identificador_bloco "bloco_d",
+    has instante_inicial 0.0, has instante_final 20.0;
+
+$c07_ultrapassante isa automovel, has identificador "c07_ultrapassante",
+    has identificador_rastreamento 701, has confianca 0.95;
+$c07_ultrapassado isa caminhao, has identificador "c07_ultrapassado",
+    has identificador_rastreamento 702, has confianca 0.84;
+$c07_faixa isa faixa_de_transito, has identificador "c07_faixa",
+    has identificador_rastreamento 703, has confianca 0.80;
+
+$c07_manobra isa ultrapassagem,
+    links (ultrapassante: $c07_ultrapassante,
+           ultrapassado: $c07_ultrapassado,
+           faixa_utilizada: $c07_faixa),
+    has identificador "m07_ultrapassagem_direita",
+    has lado "direita",
+    has instante_inicial 5.0, has instante_final 9.8, has confianca 0.83;
+
+$c07_comp isa composicao_de_cena,
+    links (cena_de_referencia: $c07, elemento_presente: $c07_manobra);
+
+
+# ---------------------------------------------------------------------
+# CENA 08 - ultrapassagem pela esquerda (NEGATIVO)
+# ---------------------------------------------------------------------
+$c08 isa cena, has identificador "cena_08",
+    has identificador_bloco "bloco_d",
+    has instante_inicial 20.0, has instante_final 40.0;
+
+$c08_ultrapassante isa automovel, has identificador "c08_ultrapassante",
+    has identificador_rastreamento 801, has confianca 0.94;
+$c08_ultrapassado isa onibus, has identificador "c08_ultrapassado",
+    has identificador_rastreamento 802, has confianca 0.87;
+$c08_faixa isa faixa_de_transito, has identificador "c08_faixa",
+    has identificador_rastreamento 803, has confianca 0.79;
+$c08_marcacao isa marcacao_longitudinal, has identificador "c08_marcacao",
+    has identificador_rastreamento 804, has confianca 0.73,
+    has tipo_marcacao "tracejada";
+
+$c08_delim isa delimitacao,
+    links (faixa_delimitada: $c08_faixa,
+           marcacao_delimitante: $c08_marcacao),
+    has lado "direita";
+
+$c08_manobra isa ultrapassagem,
+    links (ultrapassante: $c08_ultrapassante,
+           ultrapassado: $c08_ultrapassado,
+           faixa_utilizada: $c08_faixa),
+    has identificador "m08_ultrapassagem_esquerda",
+    has lado "esquerda",
+    has instante_inicial 24.0, has instante_final 28.9, has confianca 0.86;
+
+$c08_comp isa composicao_de_cena,
+    links (cena_de_referencia: $c08, elemento_presente: $c08_manobra);
+
+
+# ---------------------------------------------------------------------
+# CENA 09 - motociclista sem capacete (POSITIVO)
+# ---------------------------------------------------------------------
+$c09 isa cena, has identificador "cena_09",
+    has identificador_bloco "bloco_e",
+    has instante_inicial 0.0, has instante_final 20.0;
+
+$c09_pessoa isa pessoa, has identificador "c09_condutor",
+    has identificador_rastreamento 901, has confianca 0.88;
+$c09_moto isa motocicleta, has identificador "c09_moto",
+    has identificador_rastreamento 902, has confianca 0.91;
+
+$c09_conducao isa conducao,
+    links (condutor: $c09_pessoa, veiculo_conduzido: $c09_moto),
+    has confianca 0.85;
+
+$c09_comp isa composicao_de_cena,
+    links (cena_de_referencia: $c09, elemento_presente: $c09_pessoa);
+
+
+# ---------------------------------------------------------------------
+# CENA 10 - motociclista com capacete (NEGATIVO)
+# ---------------------------------------------------------------------
+$c10 isa cena, has identificador "cena_10",
+    has identificador_bloco "bloco_e",
+    has instante_inicial 20.0, has instante_final 40.0;
+
+$c10_pessoa isa pessoa, has identificador "c10_condutor",
+    has identificador_rastreamento 1001, has confianca 0.89;
+$c10_moto isa motocicleta, has identificador "c10_moto",
+    has identificador_rastreamento 1002, has confianca 0.92;
+$c10_capacete isa capacete, has identificador "c10_capacete",
+    has identificador_rastreamento 1003, has confianca 0.72;
+
+$c10_conducao isa conducao,
+    links (condutor: $c10_pessoa, veiculo_conduzido: $c10_moto),
+    has confianca 0.87;
+$c10_uso isa uso_de_equipamento,
+    links (usuario: $c10_pessoa, equipamento_utilizado: $c10_capacete),
+    has confianca 0.70;
+
+$c10_comp isa composicao_de_cena,
+    links (cena_de_referencia: $c10, elemento_presente: $c10_pessoa);
+
+
+# ---------------------------------------------------------------------
+# CENA 11 - ciclista (CONTRAPROVA DE CATEGORIA)
+# ---------------------------------------------------------------------
+# Serve para verificar que a categoria de motociclista e efetivamente
+# derivada do tipo do veiculo conduzido, e nao atribuida a qualquer
+# pessoa que conduza algo.
+$c11 isa cena, has identificador "cena_11",
+    has identificador_bloco "bloco_f",
+    has instante_inicial 0.0, has instante_final 20.0;
+
+$c11_pessoa isa pessoa, has identificador "c11_condutor",
+    has identificador_rastreamento 1101, has confianca 0.86;
+$c11_bicicleta isa bicicleta, has identificador "c11_bicicleta",
+    has identificador_rastreamento 1102, has confianca 0.79;
+
+$c11_conducao isa conducao,
+    links (condutor: $c11_pessoa, veiculo_conduzido: $c11_bicicleta),
+    has confianca 0.81;
+
+$c11_comp isa composicao_de_cena,
+    links (cena_de_referencia: $c11, elemento_presente: $c11_pessoa);
+
+
+# ---------------------------------------------------------------------
+# CENA 12 - frota heterogenea (HIERARQUIA DE TIPOS)
+# ---------------------------------------------------------------------
+# Reune um exemplar de cada especializacao de veiculo, para verificar que
+# uma consulta pelo tipo geral alcanca todas elas sem enumeracao.
+$c12 isa cena, has identificador "cena_12",
+    has identificador_bloco "bloco_g",
+    has instante_inicial 0.0, has instante_final 20.0;
+
+$c12_automovel isa automovel, has identificador "c12_automovel",
+    has identificador_rastreamento 1201, has confianca 0.95;
+$c12_motocicleta isa motocicleta, has identificador "c12_motocicleta",
+    has identificador_rastreamento 1202, has confianca 0.90;
+$c12_onibus isa onibus, has identificador "c12_onibus",
+    has identificador_rastreamento 1203, has confianca 0.88;
+$c12_caminhao isa caminhao, has identificador "c12_caminhao",
+    has identificador_rastreamento 1204, has confianca 0.85;
+$c12_bicicleta isa bicicleta, has identificador "c12_bicicleta",
+    has identificador_rastreamento 1205, has confianca 0.77;

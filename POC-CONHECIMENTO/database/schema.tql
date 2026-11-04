@@ -77,6 +77,7 @@ attribute velocidade_relativa, value double;
 # carrega o identificador atribuido pelo rastreamento e a confianca da
 # deteccao que o originou.
 entity objeto_de_cena,
+    owns identificador,
     owns identificador_rastreamento,
     owns confianca,
     plays composicao_de_cena:elemento_presente;
@@ -227,6 +228,7 @@ relation ocupacao_de_faixa,
 # participantes.
 relation manobra,
     relates executor,
+    owns identificador,
     owns instante_inicial,
     owns instante_final,
     owns confianca,
